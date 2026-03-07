@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clint Van Marrewijk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-light: #243352;
+    --slate: #3d4f6f;
+    --accent: #4ecdc4;
+    --accent-dim: rgba(78,205,196,0.15);
+    --warm: #f0ebe3;
+    --text: #2c3e50;
+    --text-light: #6b7c93;
+    --white: #ffffff;
+    --bg: #fafbfc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,39,68,0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  nav .name {
+    font-size: 16px; font-weight: 600; color: var(--white);
+    letter-spacing: 0.5px;
+  }
+  nav .links { display: flex; gap: 32px; }
+  nav .links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 14px; font-weight: 400; transition: color 0.2s;
+  }
+  nav .links a:hover { color: var(--accent); }
+  .hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
+
+  /* ─── HERO WITH SLIDER ─── */
+  .hero {
+    position: relative;
+    height: 85vh;
+    min-height: 500px;
+    max-height: 750px;
+    overflow: hidden;
+    margin-top: 64px;
+  }
+  .slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(26,39,68,0.15) 0%, rgba(26,39,68,0.75) 100%);
+  }
+  .slide-text {
+    position: absolute;
+    bottom: 60px;
+    left: 48px;
+    right: 48px;
+    color: var(--white);
+    max-width: 600px;
+  }
+  .slide-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    margin-bottom: 8px;
+  }
+  .slide-text p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    opacity: 0.85;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Slider controls */
+  .slider-dots {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+  }
+  .slider-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    padding: 0;
+  }
+  .slider-dot.active {
+    background: var(--accent);
+    transform: scale(1.2);
+  }
+  .slider-dot:hover { background: rgba(255,255,255,0.8); }
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(26,39,68,0.5);
+    border: none;
+    color: var(--white);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px);
+  }
+  .slider-arrow:hover { background: rgba(26,39,68,0.8); }
+  .slider-arrow.prev { left: 20px; }
+  .slider-arrow.next { right: 20px; }
+
+  /* ─── INTRO (replaces old hero text) ─── */
+  .intro {
+    padding: 80px 40px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .intro h1 {
+    font-size: 38px; font-weight: 700; line-height: 1.2;
+    color: var(--navy);
+  }
+  .intro h1 span { color: var(--accent); }
+  .intro .tagline {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+    margin-top: 20px; max-width: 680px; margin-left: auto; margin-right: auto;
+  }
+  .intro .locations {
+    margin-top: 20px; font-size: 13px; color: var(--text-light);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats {
+    background: var(--navy);
+    padding: 48px 40px;
+  }
+  .stats-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 36px; font-weight: 700; color: var(--accent);
+  }
+  .stat-label {
+    font-size: 13px; color: rgba(255,255,255,0.6);
+    margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* ─── SECTION ─── */
+  section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 32px; font-weight: 700; color: var(--navy);
+    margin-bottom: 32px;
+  }
+
+  /* ─── COMPANIES ─── */
+  .companies {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .company-card {
+    background: var(--white);
+    border: 1px solid #e8ecf1;
+    border-radius: 12px;
+    padding: 36px;
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  .company-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .company-card h3 {
+    font-size: 22px; font-weight: 700; color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .company-card .role {
+    font-size: 13px; color: var(--accent); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  .company-card p {
+    font-size: 15px; line-height: 1.7; color: var(--text-light);
+  }
+  .company-card .link {
+    display: inline-block; margin-top: 16px;
+    font-size: 14px; font-weight: 500; color: var(--navy);
+    text-decoration: none; border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px; transition: color 0.2s;
+  }
+  .company-card .link:hover { color: var(--accent); }
+
+  /* ─── EXPERTISE ─── */
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .expertise-item {
+    background: var(--white);
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    padding: 28px;
+    border-top: 3px solid var(--accent);
+    transition: box-shadow 0.3s, transform 0.2s;
+  }
+  .expertise-item:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+    transform: translateY(-2px);
+  }
+  .expertise-item h4 {
+    font-size: 16px; font-weight: 600; color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .expertise-item p {
+    font-size: 14px; line-height: 1.6; color: var(--text-light);
+  }
+
+  /* ─── WRITING ─── */
+  .writing-list { display: flex; flex-direction: column; gap: 16px; }
+  .writing-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 24px;
+    background: var(--white);
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .writing-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+  .writing-item h4 {
+    font-size: 16px; font-weight: 500; color: var(--navy);
+  }
+  .writing-item .meta {
+    font-size: 13px; color: var(--text-light);
+  }
+  .writing-item .arrow {
+    font-size: 18px; color: var(--accent); flex-shrink: 0;
+  }
+
+  /* ─── QUOTE ─── */
+  .quote-section {
+    background: var(--navy);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .quote-section blockquote {
+    max-width: 700px; margin: 0 auto;
+    font-size: 24px; line-height: 1.6;
+    color: var(--white); font-weight: 300;
+    font-style: italic;
+  }
+  .quote-section .attribution {
+    margin-top: 20px;
+    font-size: 14px; color: rgba(255,255,255,0.5);
+    font-style: normal;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: start;
+  }
+  .contact-info p {
+    font-size: 16px; line-height: 1.8; color: var(--text-light);
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid #e8ecf1;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); }
+  .contact-link .icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--accent); font-weight: 700;
+    flex-shrink: 0;
+  }
+  .contact-link .label {
+    font-size: 14px; font-weight: 500; color: var(--navy);
+  }
+  .contact-link .url {
+    font-size: 12px; color: var(--text-light);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 13px; color: var(--text-light);
+    border-top: 1px solid #e8ecf1;
+  }
+
+  /* ─── SLIDE COUNTER ─── */
+  .slide-counter {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    z-index: 10;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── EDITABLE ─── */
+  [contenteditable="true"]:focus {
+    outline: 2px dashed var(--accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  [contenteditable="true"]:hover {
+    outline: 1px dashed rgba(78,205,196,0.4);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+    .companies { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav .links {
+      display: none;
+      position: absolute;
+      top: 64px; left: 0; right: 0;
+      background: rgba(26,39,68,0.98);
+      flex-direction: column;
+      padding: 20px;
+      gap: 16px;
+    }
+    nav .links.open { display: flex; }
+    .hamburger { display: block; }
+    .hero { height: 60vh; min-height: 350px; }
+    .slide-text { bottom: 40px; left: 24px; right: 24px; }
+    .slide-text h2 { font-size: 20px; }
+    .slide-text p { font-size: 13px; }
+    .slider-arrow { width: 36px; height: 36px; font-size: 16px; }
+    .slider-arrow.prev { left: 10px; }
+    .slider-arrow.next { right: 10px; }
+    .intro { padding: 50px 24px 40px; text-align: center; }
+    .intro h1 { font-size: 28px; }
+    .intro .tagline { font-size: 15px; margin-top: 16px; }
+    .intro .locations { margin-top: 14px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .companies { grid-template-columns: 1fr; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 24px; }
+    nav { padding: 0 20px; }
+    .quote-section { padding: 60px 24px; }
+    .quote-section blockquote { font-size: 20px; }
+    .section-title { font-size: 26px; }
+    .writing-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .writing-item .arrow { align-self: flex-end; }
+  }
+  @media (max-width: 480px) {
+    .hero { height: 50vh; min-height: 300px; }
+    .slide-text { bottom: 30px; left: 16px; right: 16px; }
+    .slide-text h2 { font-size: 18px; }
+    .intro h1 { font-size: 24px; }
+    .stat-num { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="name">Clint Van Marrewijk</div>
+  <button class="hamburger" onclick="document.querySelector('.links').classList.toggle('open')" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="links">
+    <a href="#companies">Companies</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#writing">Writing</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO SLIDER -->
+<div class="hero">
+  <div class="slider-track" id="sliderTrack">
+    <div class="slide">
+      <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">The Zelandez team at our conference booth</h2>
+        <p contenteditable="true">Lithium Brine Technology Services &mdash; accelerating lithium supply worldwide.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-02-world-lithium.jpg" alt="World Lithium Congress" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">World Lithium Congress, GiGA+ USA</h2>
+        <p contenteditable="true">Our team presenting at Benchmark's flagship lithium industry event.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-03-hitech-awards.jpg" alt="NZ Hi-Tech Awards 2024" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">2024 NZ Hi-Tech Awards</h2>
+        <p contenteditable="true">Representing New Zealand's technology sector on the global stage.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-04-marina.jpg" alt="Vancouver marina" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">Between meetings in Vancouver</h2>
+        <p contenteditable="true">Building relationships across the Americas &mdash; from Canada to Argentina.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-05-sumo-japan.jpg" alt="Sumo wrestling in Tokyo" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">Sumo in Tokyo with the team</h2>
+        <p contenteditable="true">Business takes you to some incredible places. Always learning.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-06-golf-texas.jpg" alt="Golf in Austin, Texas" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">Home turf in Austin, Texas</h2>
+        <p contenteditable="true">Where Zelandez runs its US operations from. Occasionally we make time for golf.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-07-nz-home.jpg" alt="New Zealand countryside" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">Back home in New Zealand</h2>
+        <p contenteditable="true">Where it all started. Waihi dairy farm roots, now operating across five countries.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-08-boat.jpg" alt="On the water" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2 contenteditable="true">Out on the water</h2>
+        <p contenteditable="true">Recharging between deals. Can't beat being on the ocean.</p>
+      </div>
+    </div>
+  </div>
+  <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">&#8249;</button>
+  <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">&#8250;</button>
+  <div class="slider-dots" id="sliderDots"></div>
+  <div class="slide-counter" id="slideCounter">1 / 8</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro reveal">
+  <h1 contenteditable="true">Building the tools that<br>bring <span>lithium</span> to market</h1>
+  <p class="tagline" contenteditable="true">
+    Co-founder of Zelandez and SalarIQ. I've spent the last seven years helping lithium brine explorers avoid expensive mistakes and get their projects to production. We've worked on more brine assets than anyone else in the industry.
+  </p>
+  <p class="locations" contenteditable="true">Austin, TX &nbsp;&middot;&nbsp; Taupo, NZ &nbsp;&middot;&nbsp; Buenos Aires, AR</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num" contenteditable="true">58</div>
+      <div class="stat-label" contenteditable="true">Brine assets worked</div>
+    </div>
+    <div>
+      <div class="stat-num" contenteditable="true">267</div>
+      <div class="stat-label" contenteditable="true">Assets tracked globally</div>
+    </div>
+    <div>
+      <div class="stat-num" contenteditable="true">70%</div>
+      <div class="stat-label" contenteditable="true">Active LATAM/NA projects</div>
+    </div>
+    <div>
+      <div class="stat-num" contenteditable="true">2018</div>
+      <div class="stat-label" contenteditable="true">Founded Zelandez</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPANIES -->
+<section id="companies" class="reveal">
+  <div class="section-label">Companies</div>
+  <h2 class="section-title" contenteditable="true">What I'm building</h2>
+  <div class="companies">
+    <div class="company-card">
+      <h3 contenteditable="true">Zelandez</h3>
+      <div class="role" contenteditable="true">Co-founder &amp; Director</div>
+      <p contenteditable="true">
+        The world's largest independent provider of specialist lithium brine services. We help explorers drill better wells, build better resource estimates, and navigate the path from discovery to production. Our team includes hydrogeologists, process engineers, economists, and brinefield managers operating across Argentina, Chile, Bolivia, and North America.
+      </p>
+      <a href="https://zelandez.com" class="link" target="_blank">zelandez.com &rarr;</a>
+    </div>
+    <div class="company-card">
+      <h3 contenteditable="true">SalarIQ</h3>
+      <div class="role" contenteditable="true">Co-founder</div>
+      <p contenteditable="true">
+        The first intelligence platform purpose-built for lithium brine exploration. SalarIQ combines the largest proprietary brine dataset in the world with estimation tools that help explorers make better decisions faster. Three validated modules: Basin Volume Estimator, LCE Resource Estimator, and Synthetic Logging Simulator.
+      </p>
+      <a href="https://zelandez.com" class="link" target="_blank">Currently raising seed &rarr;</a>
+    </div>
+    <div class="company-card">
+      <h3 contenteditable="true">SaferMe</h3>
+      <div class="role" contenteditable="true">Co-founder</div>
+      <p contenteditable="true">
+        A safety and hazard reporting platform that turns field observations into actionable data. Originally ThunderMaps — built to help organisations spot risks before they become incidents. Ticking along nicely.
+      </p>
+      <a href="https://safer.me" class="link" target="_blank">safer.me &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="reveal">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title" contenteditable="true">What I know about</h2>
+  <div class="expertise-grid">
+    <div class="expertise-item">
+      <h4 contenteditable="true">Brinefield Management</h4>
+      <p contenteditable="true">Full operational management for explorers — from drilling supervision through resource estimation to PEA. We provide the announcement timetable that keeps junior explorers in conversation with the market.</p>
+    </div>
+    <div class="expertise-item">
+      <h4 contenteditable="true">DLE Advisory</h4>
+      <p contenteditable="true">Independent guidance on Direct Lithium Extraction technology selection. The hard parts aren't the DLE itself — they're pretreatment, reinjection, and designing the full flowsheet before choosing a vendor.</p>
+    </div>
+    <div class="expertise-item">
+      <h4 contenteditable="true">Resource Estimation</h4>
+      <p contenteditable="true">NI 43-101 and JORC-compliant resource estimates built on proper subsurface characterization. We've seen what happens when you drill shallow first — the resource always changes.</p>
+    </div>
+    <div class="expertise-item">
+      <h4 contenteditable="true">Technical Due Diligence</h4>
+      <p contenteditable="true">Independent technical reviews for M&A, financing, and investment decisions. We assess chapter maturity relative to project stage — working backwards from what the FID data room needs.</p>
+    </div>
+    <div class="expertise-item">
+      <h4 contenteditable="true">Cross-Boundary Dynamics</h4>
+      <p contenteditable="true">Brine doesn't respect property boundaries. Pumping from one well changes reservoir pressure for miles. The lithium industry hasn't adopted unitization frameworks yet, but it will have to.</p>
+    </div>
+    <div class="expertise-item">
+      <h4 contenteditable="true">Reinjection</h4>
+      <p contenteditable="true">Mandatory in many jurisdictions, often 10-20% of total project economics, and frequently underestimated. We model reinjection requirements before they become surprises.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <blockquote contenteditable="true">
+    "The lithium brine industry doesn't have a supply problem. It has a knowledge transfer problem."
+  </blockquote>
+  <p class="attribution" contenteditable="true">&mdash; Clint Van Marrewijk</p>
+</div>
+
+<!-- WRITING -->
+<section id="writing" class="reveal">
+  <div class="section-label">Writing &amp; Media</div>
+  <h2 class="section-title" contenteditable="true">Things I've said publicly</h2>
+  <div class="writing-list">
+    <a class="writing-item" href="writing/diaspora-podcast.html">
+      <div>
+        <h4>Podcast: NZ Diaspora — Drilling down on South American lithium</h4>
+        <div class="meta">September 2024 &middot; 43 min</div>
+      </div>
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a class="writing-item" href="writing/global-lithium-podcast.html">
+      <div>
+        <h4>Global Lithium Podcast — Episode 187: Zelandez</h4>
+        <div class="meta">May 2024 &middot; 51 min &middot; with Joe Lowry</div>
+      </div>
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a class="writing-item" href="writing/its-not-valuable-until-its-finished.html">
+      <div>
+        <h4>It's not valuable until it's finished</h4>
+        <div class="meta">January 2019 &middot; Blog post</div>
+      </div>
+      <span class="arrow">&rarr;</span>
+    </a>
+    <a class="writing-item" href="writing/changing-the-world-with-data.html">
+      <div>
+        <h4>Changing The World With Data</h4>
+        <div class="meta">March 2018 &middot; M2 Magazine interview</div>
+      </div>
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <div class="section-label">Get in touch</div>
+  <h2 class="section-title" contenteditable="true">Let's talk</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p contenteditable="true">
+        I'm always interested in talking with people who are serious about lithium brine — whether you're an explorer looking for technical guidance, an investor evaluating brine assets, or a DLE vendor wanting an honest conversation about where the industry is heading.
+      </p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://www.linkedin.com/in/clint-van-marrewijk-37584032/" target="_blank">
+        <div class="icon">in</div>
+        <div>
+          <div class="label">LinkedIn</div>
+          <div class="url">linkedin.com/in/clint-van-marrewijk</div>
+        </div>
+      </a>
+      <a class="contact-link" href="mailto:clint@zelandez.com">
+        <div class="icon">@</div>
+        <div>
+          <div class="label">Email</div>
+          <div class="url">clint@zelandez.com</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://zelandez.com" target="_blank">
+        <div class="icon">Z</div>
+        <div>
+          <div class="label">Zelandez</div>
+          <div class="url">zelandez.com</div>
+        </div>
+      </a>
+      <a class="contact-link" href="https://twitter.com/Clint_Van" target="_blank">
+        <div class="icon">X</div>
+        <div>
+          <div class="label">Twitter / X</div>
+          <div class="url">@Clint_Van</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>&copy; 2026 Clint Van Marrewijk</div>
+  <div style="margin-top:6px;">Austin, TX &middot; Taupo, NZ &middot; Buenos Aires, AR</div>
+</footer>
+
+<script>
+  // Slider logic
+  let current = 0;
+  const track = document.getElementById('sliderTrack');
+  const slides = track.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('sliderDots');
+  const total = slides.length;
+
+  // Create dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  const counter = document.getElementById('slideCounter');
+
+  function goToSlide(n) {
+    current = n;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    document.querySelectorAll('.slider-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function moveSlide(dir) {
+    let next = current + dir;
+    if (next < 0) next = total - 1;
+    if (next >= total) next = 0;
+    goToSlide(next);
+  }
+
+  // Auto-advance every 5 seconds, pause on hover
+  let autoPlay = setInterval(() => moveSlide(1), 5000);
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  hero.addEventListener('mouseleave', () => {
+    autoPlay = setInterval(() => moveSlide(1), 5000);
+  });
+
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  hero.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive: true});
+  hero.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      moveSlide(diff > 0 ? 1 : -1);
+    }
+  }, {passive: true});
+
+  // Keyboard support
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') moveSlide(-1);
+    if (e.key === 'ArrowRight') moveSlide(1);
+  });
+
+  // Scroll-reveal animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>It's not valuable until it's finished — Clint Van Marrewijk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --accent: #4ecdc4;
+    --accent-dim: rgba(78,205,196,0.15);
+    --text: #2c3e50;
+    --text-light: #6b7c93;
+    --white: #ffffff;
+    --bg: #fafbfc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,39,68,0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  nav .name {
+    font-size: 16px; font-weight: 600; color: var(--white);
+    letter-spacing: 0.5px; text-decoration: none;
+  }
+  nav .name:hover { color: var(--accent); }
+  nav .back-link {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 14px; transition: color 0.2s;
+  }
+  nav .back-link:hover { color: var(--accent); }
+
+  .page-hero {
+    margin-top: 64px;
+    background: var(--navy);
+    padding: 80px 40px 60px;
+  }
+  .page-hero-inner { max-width: 800px; margin: 0 auto; }
+  .page-hero .label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-size: 36px; font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 12px;
+  }
+  .page-hero .meta { font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  .content {
+    max-width: 800px; margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+  .content p {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+    margin-bottom: 24px;
+  }
+
+  /* Graph containers */
+  .graph-container {
+    margin: 40px 0;
+    text-align: center;
+  }
+  .graph-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  footer {
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 13px; color: var(--text-light);
+    border-top: 1px solid #e8ecf1;
+  }
+
+  [contenteditable="true"]:focus {
+    outline: 2px dashed var(--accent);
+    outline-offset: 4px; border-radius: 4px;
+  }
+  [contenteditable="true"]:hover {
+    outline: 1px dashed rgba(78,205,196,0.4);
+    outline-offset: 4px; border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .page-hero { padding: 60px 24px 40px; }
+    .page-hero h1 { font-size: 28px; }
+    .content { padding: 32px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="name">&larr; Clint Van Marrewijk</a>
+  <a href="../index.html#writing" class="back-link">Back to Writing</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label">Blog Post</div>
+    <h1 contenteditable="true">It's not valuable until it's finished</h1>
+    <div class="meta" contenteditable="true">January 2019</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <p contenteditable="true">
+    When we are children at school, going through the grades, there are many projects we are assigned.
+  </p>
+
+  <p contenteditable="true">
+    We get good at doing things. But do our schools teach us how &ldquo;value creation&rdquo; really works?
+  </p>
+
+  <p contenteditable="true">
+    Let&rsquo;s first look at how we think value creation works:
+  </p>
+
+  <!-- Graph 1: What We Think -->
+  <div class="graph-container">
+    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" width="500" height="400">
+      <!-- Title -->
+      <text x="250" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#2c3e50" style="font-style:italic">WHAT WE THINK</text>
+
+      <!-- Y-axis (Value) -->
+      <line x1="120" y1="320" x2="120" y2="70" stroke="#4ecdc4" stroke-width="6"/>
+      <polygon points="120,60 110,85 130,85" fill="#4ecdc4"/>
+      <text x="90" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#6b7c93" transform="rotate(-90,90,200)">Value</text>
+
+      <!-- X-axis (Time) -->
+      <line x1="120" y1="320" x2="400" y2="320" stroke="#4ecdc4" stroke-width="6"/>
+      <polygon points="410,320 385,310 385,330" fill="#4ecdc4"/>
+      <text x="270" y="360" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#6b7c93">Time</text>
+
+      <!-- Linear value line -->
+      <line x1="120" y1="320" x2="310" y2="120" stroke="#9b59b6" stroke-width="3"/>
+
+      <!-- Finished dot -->
+      <circle cx="310" cy="120" r="8" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+      <text x="330" y="125" font-family="Inter, sans-serif" font-size="15" fill="#6b7c93">Finished</text>
+    </svg>
+  </div>
+
+  <p contenteditable="true">
+    See above, how over time, the value we create goes up as the task becomes completed.
+  </p>
+
+  <p contenteditable="true">
+    This seems right, because it is the way we are trained.
+  </p>
+
+  <p contenteditable="true">
+    We are trained to think that when we have half-way written our essay, we are half-way done. That half the value of the task has been contributed.
+  </p>
+
+  <p contenteditable="true">
+    But is that really the case?
+  </p>
+
+  <p contenteditable="true">
+    Not really, no.
+  </p>
+
+  <p contenteditable="true">
+    The real world doesn&rsquo;t reward things that are half-way done. Or even 95% done.
+  </p>
+
+  <p contenteditable="true">
+    Below is a more accurate graph of the value creation process:
+  </p>
+
+  <!-- Graph 2: What Happens -->
+  <div class="graph-container">
+    <svg viewBox="0 0 500 480" xmlns="http://www.w3.org/2000/svg" width="500" height="480">
+      <!-- Title -->
+      <text x="250" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#2c3e50" style="font-style:italic">WHAT HAPPENS</text>
+
+      <!-- Y-axis (Value) — extends both above and below origin -->
+      <line x1="140" y1="430" x2="140" y2="70" stroke="#4ecdc4" stroke-width="6"/>
+      <polygon points="140,60 130,85 150,85" fill="#4ecdc4"/>
+      <!-- Downward arrow on Y-axis -->
+      <polygon points="140,440 130,415 150,415" fill="#4ecdc4"/>
+      <text x="100" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#6b7c93" transform="rotate(-90,100,240)">Value</text>
+
+      <!-- X-axis (Time) — at midpoint -->
+      <line x1="140" y1="250" x2="400" y2="250" stroke="#4ecdc4" stroke-width="6"/>
+      <polygon points="410,250 385,240 385,260" fill="#4ecdc4"/>
+      <text x="320" y="275" font-family="Inter, sans-serif" font-size="16" fill="#6b7c93">Time</text>
+
+      <!-- Value curve: goes down into negative, then shoots up at the end -->
+      <path d="M140,250 Q200,250 250,350 Q280,400 300,380 Q320,350 330,250 L330,130"
+            stroke="#9b59b6" stroke-width="3" fill="none"/>
+
+      <!-- Finished dot at top -->
+      <circle cx="330" cy="130" r="8" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+      <text x="350" y="135" font-family="Inter, sans-serif" font-size="15" fill="#6b7c93">Finished</text>
+    </svg>
+  </div>
+
+  <p contenteditable="true">
+    It&rsquo;s the act of finishing that turns all our efforts into a return.
+  </p>
+
+  <p contenteditable="true">
+    Look how the value we contribute is negative (an opportunity cost) right up until the job is finished. The time of maximum danger is not the beginning of a task, it is just before the very end. Because until something is finished there is no value. There is only a loss of potential.
+  </p>
+
+  <p contenteditable="true">
+    I often have to remind myself to break jobs down into smaller completable tasks. To release small amounts of value more often. To work the extra hour and get the job finished.
+  </p>
+
+</div>
+
+<footer>
+  <div>&copy; 2026 Clint Van Marrewijk</div>
+</footer>
+
+</body>
+</html>

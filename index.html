@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clint Van Marrewijk</title>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -30,13 +29,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── NAV ─── */
+  /* âââ NAV âââ */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     background: rgba(26,39,68,0.95);
     backdrop-filter: blur(10px);
     padding: 0 40px;
-    transition: box-shadow 0.3s ease;
     display: flex; align-items: center; justify-content: space-between;
     height: 64px;
   }
@@ -50,14 +48,10 @@
     font-size: 14px; font-weight: 400; transition: color 0.2s;
   }
   nav .links a:hover { color: var(--accent); }
-  nav.scrolled {
-    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
-  }
-
   .hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
   .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s; }
 
-  /* ─── HERO WITH SLIDER ─── */
+  /* âââ HERO WITH SLIDER âââ */
   .hero {
     position: relative;
     height: 85vh;
@@ -154,7 +148,7 @@
   .slider-arrow.prev { left: 20px; }
   .slider-arrow.next { right: 20px; }
 
-  /* ─── INTRO (replaces old hero text) ─── */
+  /* âââ INTRO (replaces old hero text) âââ */
   .intro {
     padding: 80px 40px 60px;
     max-width: 900px;
@@ -162,7 +156,7 @@
     text-align: center;
   }
   .intro h1 {
-    font-size: 40px; font-weight: 700; line-height: 1.15;
+    font-size: 38px; font-weight: 700; line-height: 1.2;
     color: var(--navy);
   }
   .intro h1 span { color: var(--accent); }
@@ -175,7 +169,7 @@
     letter-spacing: 1px; text-transform: uppercase;
   }
 
-  /* ─── STATS BAR ─── */
+  /* âââ STATS BAR âââ */
   .stats {
     background: var(--navy);
     padding: 48px 40px;
@@ -186,33 +180,33 @@
     text-align: center;
   }
   .stat-num {
-    font-size: 42px; font-weight: 700; color: var(--accent); letter-spacing: -0.5px;
+    font-size: 36px; font-weight: 700; color: var(--accent);
   }
   .stat-label {
     font-size: 13px; color: rgba(255,255,255,0.6);
     margin-top: 6px; text-transform: uppercase; letter-spacing: 1px;
   }
 
-  /* ─── SECTION ─── */
+  /* âââ SECTION âââ */
   section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
   .section-label {
-    font-size: 12px; text-transform: uppercase; letter-spacing: 3px;
-    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 12px;
   }
   .section-title {
     font-size: 32px; font-weight: 700; color: var(--navy);
     margin-bottom: 32px;
   }
 
-  /* ─── COMPANIES ─── */
+  /* âââ COMPANIES âââ */
   .companies {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
   }
   .company-card {
     background: var(--white);
     border: 1px solid #e8ecf1;
-    border-radius: 14px;
-    padding: 40px 36px;
+    border-radius: 12px;
+    padding: 36px;
     transition: box-shadow 0.3s, transform 0.2s;
   }
   .company-card:hover {
@@ -239,73 +233,10 @@
   }
   .company-card .link:hover { color: var(--accent); }
 
-
-  /* ─── EXPERTISE SLIDER ─── */
-  .expertise-scroll-wrapper {
-    position: relative;
-    overflow: hidden;
+  /* âââ EXPERTISE âââ */
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   }
-  .expertise-track {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    padding: 4px 0 16px;
-  }
-  .expertise-track::-webkit-scrollbar { display: none; }
-  .expertise-item {
-    min-width: 300px;
-    max-width: 320px;
-    flex-shrink: 0;
-  }
-  .expertise-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    background: var(--navy);
-    border: none;
-    color: var(--white);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, opacity 0.2s;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-    opacity: 0.85;
-  }
-  .expertise-arrow:hover { opacity: 1; background: var(--slate); }
-  .expertise-prev { left: -4px; }
-  .expertise-next { right: -4px; }
-  .expertise-scroll-wrapper::before,
-  .expertise-scroll-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 48px;
-    z-index: 5;
-    pointer-events: none;
-  }
-  .expertise-scroll-wrapper::before {
-    left: 0;
-    background: linear-gradient(to right, var(--bg), transparent);
-  }
-  .expertise-scroll-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, var(--bg), transparent);
-  }
-
-  .expertise-next { right: -4px; }
-
-  /* ─── EXPERTISE ─── */
-  
   .expertise-item {
     background: var(--white);
     border: 1px solid #e8ecf1;
@@ -326,7 +257,7 @@
     font-size: 14px; line-height: 1.6; color: var(--text-light);
   }
 
-  /* ─── WRITING ─── */
+  /* âââ WRITING âââ */
   .writing-list { display: flex; flex-direction: column; gap: 16px; }
   .writing-item {
     display: flex; justify-content: space-between; align-items: center;
@@ -340,7 +271,6 @@
   .writing-item:hover {
     box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     transform: translateY(-1px);
-    border-left: 3px solid var(--accent);
   }
   .writing-item h4 {
     font-size: 16px; font-weight: 500; color: var(--navy);
@@ -352,10 +282,10 @@
     font-size: 18px; color: var(--accent); flex-shrink: 0;
   }
 
-  /* ─── QUOTE ─── */
+  /* âââ QUOTE âââ */
   .quote-section {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-    padding: 100px 40px;
+    background: var(--navy);
+    padding: 80px 40px;
     text-align: center;
   }
   .quote-section blockquote {
@@ -370,7 +300,7 @@
     font-style: normal;
   }
 
-  /* ─── CONTACT ─── */
+  /* âââ CONTACT âââ */
   .contact-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
     align-items: start;
@@ -403,7 +333,7 @@
     font-size: 12px; color: var(--text-light);
   }
 
-  /* ─── FOOTER ─── */
+  /* âââ FOOTER âââ */
   footer {
     padding: 32px 40px;
     text-align: center;
@@ -411,7 +341,7 @@
     border-top: 1px solid #e8ecf1;
   }
 
-  /* ─── SLIDE COUNTER ─── */
+  /* âââ SLIDE COUNTER âââ */
   .slide-counter {
     position: absolute;
     top: 20px;
@@ -423,7 +353,7 @@
     letter-spacing: 1px;
   }
 
-  /* ─── SCROLL REVEAL ─── */
+  /* âââ SCROLL REVEAL âââ */
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -434,11 +364,9 @@
     transform: translateY(0);
   }
 
-  
-
-  /* ─── RESPONSIVE ─── */
+    /* âââ RESPONSIVE âââ */
   @media (max-width: 900px) {
-    
+    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
     .companies { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
@@ -466,7 +394,7 @@
     .intro .locations { margin-top: 14px; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .companies { grid-template-columns: 1fr; }
-    
+    .expertise-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     section { padding: 60px 24px; }
     nav { padding: 0 20px; }
@@ -528,6 +456,47 @@
         <p>Representing New Zealand's technology sector on the global stage.</p>
       </div>
     </div>
+    <div class="slide">
+      <img src="site_images/slide-04-marina.jpg" alt="Vancouver marina" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2>Between meetings in Vancouver</h2>
+        <p>Building relationships across the Americas &mdash; from Canada to Argentina.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-05-sumo-japan.jpg" alt="Sumo wrestling in Tokyo" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2>Sumo in Tokyo with the team</h2>
+        <p>Business takes you to some incredible places. Always learning.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-06-golf-texas.jpg" alt="Golf in Austin, Texas" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2>Home turf in Austin, Texas</h2>
+        <p>Where Zelandez runs its US operations from. Occasionally we make time for golf.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-07-nz-home.jpg" alt="New Zealand countryside" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2>Back home in New Zealand</h2>
+        <p>Where it all started. Waihi dairy farm roots, now operating across five countries.</p>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="site_images/slide-08-boat.jpg" alt="On the water" loading="lazy">
+      <div class="slide-overlay"></div>
+      <div class="slide-text">
+        <h2>Out on the water</h2>
+        <p>Recharging between deals. Can't beat being on the ocean.</p>
+      </div>
+    </div>
+  </div>
   <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">&#8249;</button>
   <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">&#8250;</button>
   <div class="slider-dots" id="sliderDots"></div>
@@ -582,7 +551,7 @@
       <h3>SaferMe</h3>
       <div class="role">Co-founder</div>
       <p>
-        A safety and hazard reporting platform that turns field observations into actionable data. Originally ThunderMaps — built to help organisations spot risks before they become incidents. Ticking along nicely.
+        A safety and hazard reporting platform that turns field observations into actionable data. Originally ThunderMaps â built to help organisations spot risks before they become incidents. Ticking along nicely.
       </p>
       <a href="https://safer.me" class="link" target="_blank">safer.me &rarr;</a>
     </div>
@@ -593,25 +562,22 @@
 <section id="expertise" class="reveal">
   <div class="section-label">Expertise</div>
   <h2 class="section-title">What I know about</h2>
-  <div class="expertise-scroll-wrapper">
-      <button class="expertise-arrow expertise-prev" onclick="scrollExpertise(-1)" aria-label="Scroll left">&#8249;</button>
-      <div class="expertise-track" id="expertiseTrack">
-
+  <div class="expertise-grid">
     <div class="expertise-item">
       <h4>Brinefield Management</h4>
-      <p>Full operational management for explorers — from drilling supervision through resource estimation to PEA. We provide the announcement timetable that keeps junior explorers in conversation with the market.</p>
+      <p>Full operational management for explorers â from drilling supervision through resource estimation to PEA. We provide the announcement timetable that keeps junior explorers in conversation with the market.</p>
     </div>
     <div class="expertise-item">
       <h4>DLE Advisory</h4>
-      <p>Independent guidance on Direct Lithium Extraction technology selection. The hard parts aren't the DLE itself — they're pretreatment, reinjection, and designing the full flowsheet before choosing a vendor.</p>
+      <p>Independent guidance on Direct Lithium Extraction technology selection. The hard parts aren't the DLE itself â they're pretreatment, reinjection, and designing the full flowsheet before choosing a vendor.</p>
     </div>
     <div class="expertise-item">
       <h4>Resource Estimation</h4>
-      <p>NI 43-101 and JORC-compliant resource estimates built on proper subsurface characterization. We've seen what happens when you drill shallow first — the resource always changes.</p>
+      <p>NI 43-101 and JORC-compliant resource estimates built on proper subsurface characterization. We've seen what happens when you drill shallow first â the resource always changes.</p>
     </div>
     <div class="expertise-item">
       <h4>Technical Due Diligence</h4>
-      <p>Independent technical reviews for M&A, financing, and investment decisions. We assess chapter maturity relative to project stage — working backwards from what the FID data room needs.</p>
+      <p>Independent technical reviews for M&A, financing, and investment decisions. We assess chapter maturity relative to project stage â working backwards from what the FID data room needs.</p>
     </div>
     <div class="expertise-item">
       <h4>Cross-Boundary Dynamics</h4>
@@ -621,35 +587,8 @@
       <h4>Reinjection</h4>
       <p>Mandatory in many jurisdictions, often 10-20% of total project economics, and frequently underestimated. We model reinjection requirements before they become surprises.</p>
     </div>
-  
-    <div class="expertise-item">
-      <h4>Product &amp; Market Strategy</h4>
-      <p>Guided strategic direction at Gareth Morgan Investments through its growth phase and successful sale. Identifying capability gaps, building solutions, and integrating them back into core business functions.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Investment Analysis</h4>
-      <p>Former analyst on the investment strategy team at GMI — researching securities, building quantitative models for security selection and fund evaluation, monitoring KiwiSaver and client portfolios.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Safety Technology</h4>
-      <p>Founded SaferMe (formerly ThunderMaps) — building the world's largest database of dangerous locations. Advanced safety apps used by large companies to protect their field workers globally.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Mechanical Engineering</h4>
-      <p>BE (Hons) from Canterbury — fluid dynamics, thermodynamics, energy engineering. Honours project: sealing, transmission and oil lubrication design for the Whispergen Stirling Engine.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Quantitative Modelling</h4>
-      <p>Taking complex mathematical and modelling challenges and breaking them into achievable tasks. Designing quantitative tools while understanding and communicating their inherent limitations.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Startup Leadership</h4>
-      <p>Built SaferMe from exit-capital into an internationally focused, self-funding business. Hired and led teams across Sydney, Wellington, and Gothenburg. Now scaling Zelandez across five countries.</p>
-    </div>
-      </div>
-      <button class="expertise-arrow expertise-next" onclick="scrollExpertise(1)" aria-label="Scroll right">&#8250;</button>
-    </div>
-  </section>
+  </div>
+</section>
 
 <!-- QUOTE -->
 <div class="quote-section">
@@ -664,23 +603,16 @@
   <div class="section-label">Writing &amp; Media</div>
   <h2 class="section-title">Things I've said publicly</h2>
   <div class="writing-list">
-    <a class="writing-item" href="https://www.zelandez.com/news/the-untapped-lithium-assets-of-argentina/" target="_blank">
-      <div>
-        <h4>The Untapped Lithium Assets of Argentina</h4>
-        <div class="meta">2025 &middot; Zelandez article &middot; zelandez.com</div>
-      </div>
-      <span class="arrow">&rarr;</span>
-    </a>
     <a class="writing-item" href="writing/diaspora-podcast.html">
       <div>
-        <h4>Podcast: NZ Diaspora — Drilling down on South American lithium</h4>
+        <h4>Podcast: NZ Diaspora â Drilling down on South American lithium</h4>
         <div class="meta">September 2024 &middot; 43 min</div>
       </div>
       <span class="arrow">&rarr;</span>
     </a>
     <a class="writing-item" href="writing/global-lithium-podcast.html">
       <div>
-        <h4>Global Lithium Podcast — Episode 187: Zelandez</h4>
+        <h4>Global Lithium Podcast â Episode 187: Zelandez</h4>
         <div class="meta">May 2024 &middot; 51 min &middot; with Joe Lowry</div>
       </div>
       <span class="arrow">&rarr;</span>
@@ -709,7 +641,7 @@
   <div class="contact-grid">
     <div class="contact-info">
       <p>
-        I'm always interested in talking with people who are serious about lithium brine — whether you're an explorer looking for technical guidance, an investor evaluating brine assets, or a DLE vendor wanting an honest conversation about where the industry is heading.
+        I'm always interested in talking with people who are serious about lithium brine â whether you're an explorer looking for technical guidance, an investor evaluating brine assets, or a DLE vendor wanting an honest conversation about where the industry is heading.
       </p>
     </div>
     <div class="contact-links">
@@ -740,7 +672,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div style="font-weight:500;color:var(--navy);">&copy; 2026 Clint Van Marrewijk</div>
+  <div>&copy; 2026 Clint Van Marrewijk</div>
   <div style="margin-top:6px;">Austin, TX &middot; Taupo, NZ &middot; Buenos Aires, AR</div>
 </footer>
 
@@ -815,20 +747,6 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Nav shadow on scroll
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
-  });
-
-
-  // Expertise slider scroll
-  function scrollExpertise(dir) {
-    const track = document.getElementById('expertiseTrack');
-    const scrollAmount = 340;
-    track.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
-  }
-
 </script>
 
 </body>

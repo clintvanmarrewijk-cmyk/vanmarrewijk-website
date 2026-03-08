@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clint Van Marrewijk</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #1a2744;
@@ -233,53 +232,124 @@
   }
   .company-card .link:hover { color: var(--accent); }
 
-  /* ─── EXPERTISE ─── */
-  .expertise-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  /* ─── CARD SLIDER ─── */
+  .card-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -4px;
   }
-  .expertise-item {
+  .card-slider {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding: 8px 4px 16px;
+    scroll-snap-type: x mandatory;
+  }
+  .card-slider::-webkit-scrollbar { display: none; }
+  .card-slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: var(--navy);
+    border: none;
+    color: var(--white);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .card-slider-arrow:hover { background: var(--slate); }
+  .card-slider-arrow.cs-prev { left: 0; }
+  .card-slider-arrow.cs-next { right: 0; }
+  .card-slider-arrow.hidden { opacity: 0; pointer-events: none; }
+
+  /* ─── WRITING CARDS ─── */
+  .writing-card {
+    min-width: 300px;
+    max-width: 340px;
+    flex-shrink: 0;
+    background: var(--white);
+    border: 1px solid #e8ecf1;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: box-shadow 0.3s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+  }
+  .writing-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .writing-card .card-type {
+    padding: 24px 24px 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .writing-card h4 {
+    padding: 10px 24px 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+  .writing-card .card-meta {
+    padding: 10px 24px 0;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .writing-card .card-arrow {
+    padding: 16px 24px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-top: auto;
+  }
+  .writing-card .card-arrow span {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .writing-card:hover .card-arrow span { color: var(--accent); }
+
+  /* ─── EXPERTISE SLIDER ITEMS ─── */
+  .expertise-slider-item {
+    min-width: 300px;
+    max-width: 340px;
+    flex-shrink: 0;
     background: var(--white);
     border: 1px solid #e8ecf1;
     border-radius: 10px;
     padding: 28px;
     border-top: 3px solid var(--accent);
     transition: box-shadow 0.3s, transform 0.2s;
+    scroll-snap-align: start;
   }
-  .expertise-item:hover {
+  .expertise-slider-item:hover {
     box-shadow: 0 6px 24px rgba(0,0,0,0.07);
     transform: translateY(-2px);
   }
-  .expertise-item h4 {
+  .expertise-slider-item .exp-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .expertise-slider-item h4 {
     font-size: 16px; font-weight: 600; color: var(--navy);
     margin-bottom: 8px;
   }
-  .expertise-item p {
+  .expertise-slider-item p {
     font-size: 14px; line-height: 1.6; color: var(--text-light);
-  }
-
-  /* ─── WRITING ─── */
-  .writing-list { display: flex; flex-direction: column; gap: 16px; }
-  .writing-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 24px;
-    background: var(--white);
-    border: 1px solid #e8ecf1;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: box-shadow 0.2s, transform 0.2s;
-  }
-  .writing-item:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    transform: translateY(-1px);
-  }
-  .writing-item h4 {
-    font-size: 16px; font-weight: 500; color: var(--navy);
-  }
-  .writing-item .meta {
-    font-size: 13px; color: var(--text-light);
-  }
-  .writing-item .arrow {
-    font-size: 18px; color: var(--accent); flex-shrink: 0;
   }
 
   /* ─── QUOTE ─── */
@@ -363,9 +433,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
-    .expertise-grid { grid-template-columns: repeat(2, 1fr); }
     .companies { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
@@ -393,15 +465,15 @@
     .intro .locations { margin-top: 14px; }
     .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .companies { grid-template-columns: 1fr; }
-    .expertise-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     section { padding: 60px 24px; }
     nav { padding: 0 20px; }
     .quote-section { padding: 60px 24px; }
     .quote-section blockquote { font-size: 20px; }
     .section-title { font-size: 26px; }
-    .writing-item { flex-direction: column; align-items: flex-start; gap: 8px; }
-    .writing-item .arrow { align-self: flex-end; }
+    .writing-card { min-width: 260px; }
+    .expertise-slider-item { min-width: 260px; }
+    .card-slider-arrow { width: 34px; height: 34px; font-size: 16px; }
   }
   @media (max-width: 480px) {
     .hero { height: 50vh; min-height: 300px; }
@@ -409,6 +481,8 @@
     .slide-text h2 { font-size: 18px; }
     .intro h1 { font-size: 24px; }
     .stat-num { font-size: 28px; }
+    .writing-card { min-width: 240px; }
+    .expertise-slider-item { min-width: 240px; }
   }
 </style>
 </head>
@@ -430,13 +504,13 @@
 
 <!-- HERO SLIDER -->
 <div class="hero">
-  <div class="slider-track" id="sliderTrack">
+  <div class="slider-track" id="sliderTrack" style="transform: translateX(-300%);">
     <div class="slide">
       <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>The Zelandez team at our conference booth</h2>
-        <p>Lithium Brine Technology Services &mdash; accelerating lithium supply worldwide.</p>
+        <p>Lithium Brine Technology Services — accelerating lithium supply worldwide.</p>
       </div>
     </div>
     <div class="slide">
@@ -460,7 +534,7 @@
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Between meetings in Vancouver</h2>
-        <p>Building relationships across the Americas &mdash; from Canada to Argentina.</p>
+        <p>Building relationships across the Americas — from Canada to Argentina.</p>
       </div>
     </div>
     <div class="slide">
@@ -496,10 +570,10 @@
       </div>
     </div>
   </div>
-  <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">&#8249;</button>
-  <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">&#8250;</button>
-  <div class="slider-dots" id="sliderDots"></div>
-  <div class="slide-counter" id="slideCounter">1 / 8</div>
+  <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">‹</button>
+  <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">›</button>
+  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot active" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button><button class="slider-dot" aria-label="Go to slide 8"></button></div>
+  <div class="slide-counter" id="slideCounter">4 / 8</div>
 </div>
 
 <!-- INTRO -->
@@ -508,7 +582,7 @@
   <p class="tagline">
     Co-founder of Zelandez. I've spent the last seven years helping lithium brine explorers avoid expensive mistakes and get their projects to production. We've worked on more brine assets than anyone else in the industry.
   </p>
-  <p class="locations">Austin, TX &nbsp;&middot;&nbsp; Taupo, NZ &nbsp;&middot;&nbsp; Buenos Aires, AR</p>
+  <p class="locations">Austin, TX &nbsp;·&nbsp; Taupo, NZ &nbsp;·&nbsp; Buenos Aires, AR</p>
 </div>
 
 <!-- STATS -->
@@ -544,7 +618,7 @@
       <p>
         The world's largest independent provider of specialist lithium brine services. We help explorers drill better wells, build better resource estimates, and navigate the path from discovery to production. Our team includes hydrogeologists, process engineers, economists, and brinefield managers operating across Argentina, Chile, Bolivia, and North America.
       </p>
-      <a href="https://zelandez.com" class="link" target="_blank">zelandez.com &rarr;</a>
+      <a href="https://zelandez.com" class="link" target="_blank">zelandez.com →</a>
     </div>
     <div class="company-card">
       <h3>SaferMe</h3>
@@ -552,7 +626,7 @@
       <p>
         A safety and hazard reporting platform that turns field observations into actionable data. Originally ThunderMaps — built to help organisations spot risks before they become incidents. Ticking along nicely.
       </p>
-      <a href="https://safer.me" class="link" target="_blank">safer.me &rarr;</a>
+      <a href="https://safer.me" class="link" target="_blank">safer.me →</a>
     </div>
   </div>
 </section>
@@ -561,31 +635,61 @@
 <section id="expertise" class="reveal">
   <div class="section-label">Expertise</div>
   <h2 class="section-title">What I know about</h2>
-  <div class="expertise-grid">
-    <div class="expertise-item">
-      <h4>Brinefield Management</h4>
-      <p>Full operational management for explorers — from drilling supervision through resource estimation to PEA. We provide the announcement timetable that keeps junior explorers in conversation with the market.</p>
+  <div class="card-slider-wrapper">
+    <div class="card-slider" id="expertiseSlider">
+      <div class="expertise-slider-item">
+        <div class="exp-icon">⚖</div>
+        <h4>Brinefield Management</h4>
+        <p>Full operational management for explorers — from drilling supervision through resource estimation to PEA. We provide the announcement timetable that keeps junior explorers in conversation with the market.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">⚙</div>
+        <h4>DLE Advisory</h4>
+        <p>Independent guidance on Direct Lithium Extraction technology selection. The hard parts aren't the DLE itself — they're pretreatment, reinjection, and designing the full flowsheet before choosing a vendor.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">☍</div>
+        <h4>Resource Estimation</h4>
+        <p>NI 43-101 and JORC-compliant resource estimates built on proper subsurface characterization. We've seen what happens when you drill shallow first — the resource always changes.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">🔍</div>
+        <h4>Technical Due Diligence</h4>
+        <p>Independent technical reviews for M&amp;A, financing, and investment decisions. We assess chapter maturity relative to project stage — working backwards from what the FID data room needs.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">🌐</div>
+        <h4>Cross-Boundary Dynamics</h4>
+        <p>Brine doesn't respect property boundaries. Pumping from one well changes reservoir pressure for miles. The lithium industry hasn't adopted unitization frameworks yet, but it will have to.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">♼</div>
+        <h4>Reinjection</h4>
+        <p>Mandatory in many jurisdictions, often 10-20% of total project economics, and frequently underestimated. We model reinjection requirements before they become surprises.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">📈</div>
+        <h4>Capital Raising &amp; Company Building</h4>
+        <p>Self-funded SaferMe from startup to operating in 15+ countries. Raised capital across multiple structures — SAFEs, equity rounds, and strategic partnerships. Built and led teams through product-market fit and international expansion.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">💰</div>
+        <h4>Investment Strategy</h4>
+        <p>Four years at Gareth Morgan Investments covering product strategy, portfolio administration, and quantitative security analysis. Built financial models, launched KiwiSaver products, and delivered GIPS-compliant performance reporting.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">💻</div>
+        <h4>Software &amp; SaaS Products</h4>
+        <p>Co-founded SaferMe (formerly ThunderMaps) — a SaaS safety and hazard reporting platform. End-to-end product leadership from concept through to enterprise sales across government, utilities, and infrastructure sectors.</p>
+      </div>
+      <div class="expertise-slider-item">
+        <div class="exp-icon">🛠</div>
+        <h4>Mechanical Engineering</h4>
+        <p>BE (Hons) in Mechanical Engineering from the University of Canterbury. Specialised in fluid dynamics, thermodynamics, and energy engineering — the foundation for understanding subsurface brine behaviour.</p>
+      </div>
     </div>
-    <div class="expertise-item">
-      <h4>DLE Advisory</h4>
-      <p>Independent guidance on Direct Lithium Extraction technology selection. The hard parts aren't the DLE itself — they're pretreatment, reinjection, and designing the full flowsheet before choosing a vendor.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Resource Estimation</h4>
-      <p>NI 43-101 and JORC-compliant resource estimates built on proper subsurface characterization. We've seen what happens when you drill shallow first — the resource always changes.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Technical Due Diligence</h4>
-      <p>Independent technical reviews for M&A, financing, and investment decisions. We assess chapter maturity relative to project stage — working backwards from what the FID data room needs.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Cross-Boundary Dynamics</h4>
-      <p>Brine doesn't respect property boundaries. Pumping from one well changes reservoir pressure for miles. The lithium industry hasn't adopted unitization frameworks yet, but it will have to.</p>
-    </div>
-    <div class="expertise-item">
-      <h4>Reinjection</h4>
-      <p>Mandatory in many jurisdictions, often 10-20% of total project economics, and frequently underestimated. We model reinjection requirements before they become surprises.</p>
-    </div>
+    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('expertiseSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
 
@@ -594,42 +698,48 @@
   <blockquote>
     "The lithium brine industry doesn't have a supply problem. It has a knowledge transfer problem."
   </blockquote>
-  <p class="attribution">&mdash; Clint Van Marrewijk</p>
+  <p class="attribution">— Clint Van Marrewijk</p>
 </div>
 
 <!-- WRITING -->
 <section id="writing" class="reveal">
   <div class="section-label">Writing &amp; Media</div>
   <h2 class="section-title">Things I've said publicly</h2>
-  <div class="writing-list">
-    <a class="writing-item" href="writing/diaspora-podcast.html">
-      <div>
-        <h4>Podcast: NZ Diaspora — Drilling down on South American lithium</h4>
-        <div class="meta">September 2024 &middot; 43 min</div>
-      </div>
-      <span class="arrow">&rarr;</span>
-    </a>
-    <a class="writing-item" href="writing/global-lithium-podcast.html">
-      <div>
+  <div class="card-slider-wrapper">
+    <div class="card-slider" id="writingSlider">
+      <a class="writing-card" href="https://www.zelandez.com/news/the-untapped-lithium-assets-of-argentina/" target="_blank">
+        <div class="card-type">Article</div>
+        <h4>Lithium Brine 101: How to compare and value lithium brine deposits</h4>
+        <div class="card-meta">February 2026 · zelandez.com</div>
+        <div class="card-arrow"><span>Read article →</span></div>
+      </a>
+      <a class="writing-card" href="writing/diaspora-podcast.html">
+        <div class="card-type">Podcast</div>
+        <h4>NZ Diaspora — Drilling down on South American lithium</h4>
+        <div class="card-meta">September 2024 · 43 min</div>
+        <div class="card-arrow"><span>Listen →</span></div>
+      </a>
+      <a class="writing-card" href="writing/global-lithium-podcast.html">
+        <div class="card-type">Podcast</div>
         <h4>Global Lithium Podcast — Episode 187: Zelandez</h4>
-        <div class="meta">May 2024 &middot; 51 min &middot; with Joe Lowry</div>
-      </div>
-      <span class="arrow">&rarr;</span>
-    </a>
-    <a class="writing-item" href="writing/its-not-valuable-until-its-finished.html">
-      <div>
+        <div class="card-meta">May 2024 · 51 min · with Joe Lowry</div>
+        <div class="card-arrow"><span>Listen →</span></div>
+      </a>
+      <a class="writing-card" href="writing/its-not-valuable-until-its-finished.html">
+        <div class="card-type">Blog post</div>
         <h4>It's not valuable until it's finished</h4>
-        <div class="meta">January 2019 &middot; Blog post</div>
-      </div>
-      <span class="arrow">&rarr;</span>
-    </a>
-    <a class="writing-item" href="writing/changing-the-world-with-data.html">
-      <div>
+        <div class="card-meta">January 2019</div>
+        <div class="card-arrow"><span>Read post →</span></div>
+      </a>
+      <a class="writing-card" href="writing/changing-the-world-with-data.html">
+        <div class="card-type">Interview</div>
         <h4>Changing The World With Data</h4>
-        <div class="meta">March 2018 &middot; M2 Magazine interview</div>
-      </div>
-      <span class="arrow">&rarr;</span>
-    </a>
+        <div class="card-meta">March 2018 · M2 Magazine</div>
+        <div class="card-arrow"><span>Read interview →</span></div>
+      </a>
+    </div>
+    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('writingSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
 
@@ -671,8 +781,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div>&copy; 2026 Clint Van Marrewijk</div>
-  <div style="margin-top:6px;">Austin, TX &middot; Taupo, NZ &middot; Buenos Aires, AR</div>
+  <div>© 2026 Clint Van Marrewijk</div>
+  <div style="margin-top:6px;">Austin, TX · Taupo, NZ · Buenos Aires, AR</div>
 </footer>
 
 <script>
@@ -746,7 +856,31 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Card slider logic
+  function scrollCardSlider(sliderId, direction) {
+    const slider = document.getElementById(sliderId);
+    const card = slider.querySelector('.writing-card, .expertise-slider-item');
+    const cardWidth = card ? card.offsetWidth + 24 : 324; // card width + gap
+    slider.scrollBy({ left: direction * cardWidth * 2, behavior: 'smooth' });
+  }
+
+  // Show/hide arrows based on scroll position
+  function updateCardArrows(slider) {
+    const wrapper = slider.closest('.card-slider-wrapper');
+    if (!wrapper) return;
+    const prev = wrapper.querySelector('.cs-prev');
+    const next = wrapper.querySelector('.cs-next');
+    if (prev) prev.classList.toggle('hidden', slider.scrollLeft <= 10);
+    if (next) next.classList.toggle('hidden', slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10);
+  }
+
+  document.querySelectorAll('.card-slider').forEach(slider => {
+    updateCardArrows(slider);
+    slider.addEventListener('scroll', () => updateCardArrows(slider), { passive: true });
+    window.addEventListener('resize', () => updateCardArrows(slider));
+  });
 </script>
 
-</body>
-</html>
+
+</body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Usain Bolt — Clint Van Marrewijk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --accent: #4ecdc4;
+    --accent-dim: rgba(78,205,196,0.15);
+    --text: #2c3e50;
+    --text-light: #6b7c93;
+    --white: #ffffff;
+    --bg: #fafbfc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,39,68,0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  nav .name {
+    font-size: 16px; font-weight: 600; color: var(--white);
+    letter-spacing: 0.5px; text-decoration: none;
+  }
+  nav .name:hover { color: var(--accent); }
+  nav .back-link {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 14px; transition: color 0.2s;
+  }
+  nav .back-link:hover { color: var(--accent); }
+  .page-hero {
+    margin-top: 64px;
+    background: var(--navy);
+    padding: 80px 40px 60px;
+  }
+  .page-hero-inner { max-width: 800px; margin: 0 auto; }
+  .page-hero .label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-size: 36px; font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 12px;
+  }
+  .page-hero .meta { font-size: 15px; color: rgba(255,255,255,0.6); }
+  .content {
+    max-width: 800px; margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+  .content p {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .content h2 {
+    font-size: 22px; font-weight: 600; color: var(--navy);
+    margin-top: 40px; margin-bottom: 16px;
+  }
+  .content img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 32px 0;
+  }
+  .content .caption {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 32px;
+  }
+  .content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+  .content ul li {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .content ul li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 12px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 48px 0;
+    border-radius: 2px;
+  }
+  footer {
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 13px; color: var(--text-light);
+    border-top: 1px solid #e8ecf1;
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .page-hero { padding: 60px 24px 40px; }
+    .page-hero h1 { font-size: 28px; }
+    .content { padding: 32px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="name">&larr; Clint Van Marrewijk</a>
+  <a href="../index.html#writing" class="back-link">Back to Writing</a>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label">Travel</div>
+    <h1>Meeting Usain Bolt</h1>
+    <div class="meta">October 2016 &mdash; Herzogenaurach &amp; Munich, Germany</div>
+  </div>
+</div>
+<div class="content">
+  <p>A few weeks ago my friend asked me to fly with him to Germany to meet Usain Bolt. He had a package tour, and he offered to shout me the trip. It's the type of offer that can't easily be turned down. Particularly as the timing meant we would be arriving during Oktoberfest&hellip; German beer and sausage are extremely appealing things.</p>
+  <img src="https://vanmarrewijk.me/wp-content/uploads/2016/10/meeting-usain-bolt-germany.jpg" alt="Clint Van Marrewijk meeting Usain Bolt at the Puma factory in Herzogenaurach, Germany">
+  <p class="caption">Meeting the fastest man on earth at the Puma factory in Herzogenaurach</p>
+  <h2>So what's Usain Bolt like?</h2>
+  <p>We met him in the Puma factory in Herzogenaurach (Puma sponsor him), which had high concrete ceilings and exposed ducting &ndash; the typical modern yet cold factory store layout, that you may be familiar with.</p>
+  <p>The first thing you notice is that he's tall and fine boned. Surprisingly so.</p>
+  <p>He's like a greyhound or thoroughbred &ndash; slim, finely built and long limbed &ndash; which I suppose is of little surprise to most people.</p>
+  <p>As for his demeanor. It's hard to know what someone is truly like after only a first impression, but to me, he seemed watchful, accommodating and friendly. Underneath the hoopla and persona that follows him, he appeared reasonably shy with a down-to-earth character, and with no pretentiousness.</p>
+  <div class="section-divider"></div>
+  <p>After meeting the man, and hitting the Puma store, it was time to get to Munich and get into some Oktoberfest action. [No not with Usain Bolt. Just us Kiwis checking out the sights]</p>
+  <img src="https://vanmarrewijk.me/wp-content/uploads/2016/10/beers-at-oktoberfest.jpg" alt="Beer steins and pretzels at Oktoberfest 2016 in Munich">
+  <p class="caption">Oktoberfest essentials &mdash; beer and pretzels in Munich</p>
+  <p>I'd heard about Oktoberfest many times, but I was not prepared for how truly big the event was.</p>
+  <p>Here are some statistics for you:</p>
+  <ul>
+    <li>Total people attending: 7.2 Million</li>
+    <li>Total chickens eaten: 550,000</li>
+    <li>Enough seating to accommodate 100,000 beer drinkers</li>
+  </ul>
+  <p>It was a good week away.</p>
+  <p>Now that I'm back Wellington, it's time to hit the gym, to make up for turning myself into a walking German sausage.</p>
+  <img src="https://vanmarrewijk.me/wp-content/uploads/2016/10/giant-german-circular-bbq.jpg" alt="Giant spinning circular BBQ grill in Germany">
+  <p class="caption">Who doesn't like a giant spinning BBQ of meat?</p>
+</div>
+<footer>
+  &copy; 2026 Clint Van Marrewijk
+</footer>
+</body>
+</html>

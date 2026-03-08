@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changing The World With Data — Clint Van Marrewijk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --accent: #4ecdc4;
+    --accent-dim: rgba(78,205,196,0.15);
+    --text: #2c3e50;
+    --text-light: #6b7c93;
+    --white: #ffffff;
+    --bg: #fafbfc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,39,68,0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  nav .name {
+    font-size: 16px; font-weight: 600; color: var(--white);
+    letter-spacing: 0.5px; text-decoration: none;
+  }
+  nav .name:hover { color: var(--accent); }
+  nav .back-link {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 14px; transition: color 0.2s;
+  }
+  nav .back-link:hover { color: var(--accent); }
+
+  .page-hero {
+    margin-top: 64px;
+    background: var(--navy);
+    padding: 80px 40px 60px;
+  }
+  .page-hero-inner { max-width: 800px; margin: 0 auto; }
+  .page-hero .label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-size: 36px; font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 12px;
+  }
+  .page-hero .meta { font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  .content {
+    max-width: 800px; margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+  .content p {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .content .intro-note {
+    font-size: 15px; line-height: 1.7;
+    color: var(--text-light);
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+    margin-bottom: 40px;
+  }
+
+  /* Q&A styling */
+  .qa-block {
+    margin-bottom: 40px;
+  }
+  .qa-block .question {
+    font-size: 18px; font-weight: 600; color: var(--navy);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .qa-block .answer {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+  }
+  .qa-block .answer p {
+    margin-bottom: 16px;
+  }
+  .qa-block .answer p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Section divider */
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 48px 0;
+    border-radius: 2px;
+  }
+
+  footer {
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 13px; color: var(--text-light);
+    border-top: 1px solid #e8ecf1;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .page-hero { padding: 60px 24px 40px; }
+    .page-hero h1 { font-size: 28px; }
+    .content { padding: 32px 24px 60px; }
+    .qa-block .question { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="name">&larr; Clint Van Marrewijk</a>
+  <a href="../index.html#writing" class="back-link">Back to Writing</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label">Interview</div>
+    <h1>Changing The World With Data</h1>
+    <div class="meta">M2 Magazine &middot; March 2018</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <p class="intro-note">
+    This article was first published in M2 Magazine, before we changed our name to SaferMe. Since the post is mostly about me, I&rsquo;ve just republished it here on my blog &mdash; full credit to Andre at M2.
+  </p>
+
+  <p>
+    As an ex-mechanical engineer and farmer, Clint Van Marrewijk has probably had a varied pathway to co-founding a data driven New Zealand company that is gaining exponential global growth and changing the way that people are interacting with their environment.
+  </p>
+
+  <p>
+    While ThunderMaps is being used by councils and large organisations around the globe, the concept was sparked by van Marrewijk&rsquo;s time at a KiwiSaver company where he helped to develop back-end systems which utilised data. It was here that he realised the power of data. When the business was sold to Kiwibank in 2012, van Marrewijk saw an opportunity to build a company that took this relationship with data even further.
+  </p>
+
+  <p>
+    The result is ThunderMaps, a system that integrates with a number of services to find relevant data specific to a geographic area &mdash; data is scanned from a variety of sources such as weather and emergency callouts and so on. The resulting system feeds apps for different contexts. The current offerings are risk reporting, smart cities and mobile data collection apps. Each one using the power of digital information to create a real tangible impact on the way that companies, organisations, governments, councils and individuals relate to their environments.
+  </p>
+
+  <div class="section-divider"></div>
+
+  <div class="qa-block">
+    <div class="question">Did you always know you wanted to be an entrepreneur?</div>
+    <div class="answer">
+      <p>I grew up a typical Kiwi kid growing up on a dairy farm. I used to buy calves off dad and raise them on old milk, and sell them back to the neighbor. Every year I used to buy three piglets and raise them up on scraps and sell them. But that was just for cash. Typical farming kid, I guess. And then milking cows, shifting hay bales. But yeah, I mean no more than anyone else.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">And the technology side, when did the two things meet?</div>
+    <div class="answer">
+      <p>I guess it&rsquo;s an accident. I went through university like most people do and then I did engineering. Then to get my first job &mdash; instead of looking for an engineering company, I just made a list of companies I thought would grow really quickly. So this is in 2006. I went and visited them all and checked them out, and then ended up picking an investment company.</p>
+      <p>Certainly, I&rsquo;d recommend it as a path for others. Not to choose the industry, but to choose the business. And to look for that business that&rsquo;s at the right stage, so that you can grow with it.</p>
+      <p>And this was when KiwiSaver was coming out, which was a government sponsored scheme. And it was obviously going to be a really big company. At the time it was quite small. And I just went in there, and drove my Holden down to Wellington, literally. Parked on the side of the road, went up the elevator and sort of stood there and said, &ldquo;Oh, I want to work for your company, it&rsquo;s going to be massive, it&rsquo;s going to great. I&rsquo;ll take any job you&rsquo;ve got.&rdquo;</p>
+      <p>They hired me, and I was there for 7 years, and it was sold to Kiwibank. So that was kind of a good start. Because it was a small team that grew big there was lots of tech and building things along the way. And then started this project. Well it started as an experiment, I guess &mdash; while I was still there. Then the company was in the buyout process, and then I just carried on.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">And what was it about that sort of environment? Do you think that was a springboard for the success you&rsquo;re having now?</div>
+    <div class="answer">
+      <p>Yes, absolutely. I mean luck is everything. I think variety is important. I mean, you want to truly have some skill to fall back on. And luckily, the first job there was &mdash; it was something I could throw myself into and get good at. Then once you&rsquo;ve got at least some skill, you can build up from that.</p>
+      <p>I think the fact that the company was growing was incredibly important. Certainly, I&rsquo;d recommend it as a path for others. Not to choose the industry, but to choose the business. And to look for that business that&rsquo;s at the right stage, so that you can grow with it.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">Were you always conscious of the fact that you were going to go and do something on your own at some point?</div>
+    <div class="answer">
+      <p>No I wasn&rsquo;t one of those people that knew what they wanted to be. I just followed the path that was in front of me until I got off the train tracks of life after uni. And then obviously travelled and came back and was a farmer for a year and a half and just sort of thought about where would be a great place to work, and went there.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">And what was the catalyst for that first experiment that has essentially become this global business for you?</div>
+    <div class="answer">
+      <p>One of the things that I was doing at the KiwiSaver company was taking lots of data types and figuring out information on each person and how best to maximise the service to them. During that, I figured out there was all this data just sitting there that wasn&rsquo;t really being used properly.</p>
+      <p>So with the first experiment I just hired a couple of developers to do some experiments with data and try and make it useful. And that was where ThunderMaps began. But for the first year or two years, I didn&rsquo;t think it would work at all. And then it was really only about two years ago that it sort of kicked off and got client after client. We opened a Swedish office in 2015. We opened the London office eight months or nine months ago.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">What was the trigger for the success?</div>
+    <div class="answer">
+      <p>My dumb persistence, I guess. Just surviving long enough to grow past your own mistakes as well. Your limitation is yourself, and you&rsquo;re never more aware of that when you are leading the company.</p>
+      <p>I mean, so when you were coming up through another company &mdash; you always feel like there&rsquo;s someone in your way, and you always feel like they are the one that&rsquo;s stopping you doing what needs to be done, and it&rsquo;s quite annoying. But then what&rsquo;s quite humbling, is that you get to not be anyone in the way anymore at all. And you realise that you&rsquo;re the limiting factor.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">There&rsquo;s the old thing about founders and CEOs not necessarily being the same thing. Is there part of an evolution of growth that you are thinking about in terms of your role?</div>
+    <div class="answer">
+      <p>Certainly your job description changes, and you have to change with it. And just treat it as a learning experience. Because everything you do, you&rsquo;re not very good at it. So you have to quickly get better. And also realise where you&rsquo;re not good, and then also realise what you should farm out first.</p>
+      <p>So I feel like the only things that will remain as part of my role if I was to stay a CEO is essentially sales and HR. That&rsquo;s the main thing &mdash; financing as well, investment type stuff. But after that, everything else kind of gets farmed out. All the product management and other things.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">To go back to the early days, where you say it was pure perseverance and working through mistakes &mdash; were there any clues that there was something there? That it wasn&rsquo;t stupid?</div>
+    <div class="answer">
+      <p>Not particularly. I mean I felt it should exist. And therefore, why not do it? Life&rsquo;s very limited, you&rsquo;ve got no time, so if you&rsquo;re going to do something, you might as well have a real crack.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">As you grow how do you instill your passion and philosophy into the team?</div>
+    <div class="answer">
+      <p>I actually don&rsquo;t know the answer. I&rsquo;ve talked to people about how you help the culture stay the way it is, and be the way you want it. I actually don&rsquo;t know. We&rsquo;re trying to work on that. I don&rsquo;t have any magic sort of way.</p>
+      <p>We do believe in certain things. Like we believe in ownership, I want people to have that same opportunity I had &mdash; where &mdash; if they want to own some of the company, they can. And then in six years, when you get bought out, you have some cash to start your own thing if you want to.</p>
+      <p>But we&rsquo;ve got no sort of ethos yet. Or we haven&rsquo;t written that statement that says what we are yet.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">Do you think that the startup process has been harder or easier by being initially based in New Zealand, as opposed to say if you were around the corner in Silicon Valley?</div>
+    <div class="answer">
+      <p>It&rsquo;s funny, when we&rsquo;re selling to New Zealand we&rsquo;ll often start it from Sweden. So our first call will be from Sweden to New Zealand. And the CIO or whoever we are trying to target they&rsquo;ll come in and they&rsquo;ll have a Skype session with this &ldquo;innovative Swedish company.&rdquo; And then they&rsquo;ll sit at the water cooler, and they&rsquo;ll say, &ldquo;Oh I&rsquo;ve just been doing this innovative thing from Europe.&rdquo; And then they&rsquo;ll set up the second meeting, and we&rsquo;ll come in, and the New Zealand arm of this company will come and sell the product.</p>
+      <p>Interestingly, when we&rsquo;re selling in Sweden, we never do it that way. So we always say, &ldquo;We&rsquo;re Swedish, Sweden. Swedish made.&rdquo; And yeah, so it&rsquo;s a different psyche.</p>
+      <p>You kind of see it in our buy New Zealand Made campaign. So you buy New Zealand made, because you know the guy. It&rsquo;s your local. That it is not good. But it&rsquo;s Kiwi. Whereas when you see a Swedish, &ldquo;buy Swedish,&rdquo; you buy Swedish because it&rsquo;s Swedish &mdash; it&rsquo;s better. So they really believe in themselves. I don&rsquo;t think we&rsquo;ve quite got there yet. But we should one day.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">Does that highlight a New Zealand attitude that we&rsquo;re going to need to face before we can really ramp up our industry here. Do we need to kind of get over ourselves a little bit?</div>
+    <div class="answer">
+      <p>I think it&rsquo;s coming. I mean it very much feels like a New Zealand company &mdash; in the eyes of other New Zealand companies &mdash; isn&rsquo;t achieving until it&rsquo;s achieving internationally. And that&rsquo;s just because we&rsquo;re small, we all travel.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">And in terms of having a development team based here, are there any limitations?</div>
+    <div class="answer">
+      <p>I wouldn&rsquo;t say so. If anything there are advantages over many parts of the world. You have a highly educated workforce. They&rsquo;re not as expensive as the US by any stretch, or even Aussie. But they&rsquo;re just as good. And you&rsquo;ll get a lot of people coming to New Zealand, because they really want to live here. I think we&rsquo;ve got a fantastic team, there&rsquo;s no doubt about that. It&rsquo;s a really good start.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">What&rsquo;s your vision for the next five years of your business &mdash; where do you think you&rsquo;ll be?</div>
+    <div class="answer">
+      <p>At the moment we&rsquo;re focusing very much on large global teams and enterprise customers. So you&rsquo;re talking 1000 plus or 400 to 500 people at the minimum size. We give them a branded product, it&rsquo;s very bespoke from their point of view. Although from our point of view, it&rsquo;s just off the shelf. This phase of our business is all about this much more expensive product. But obviously there&rsquo;s more margin for us.</p>
+      <p>So we&rsquo;re spitting that out over and over and over again, and making the money. But that&rsquo;s actually to finance the next stage of our business, which is at the smaller end, using the data that we&rsquo;re accumulating now to create a consumer level product. So there&rsquo;s kind of stages to what we&rsquo;re doing and it seems relatively straightforward what we have to do. We just have to clock on and keep working.</p>
+    </div>
+  </div>
+
+  <div class="qa-block">
+    <div class="question">In terms of the experience that you&rsquo;ve had mentoring budding entrepreneurs &mdash; what are some of the best things that we can do in terms of teaching our children entrepreneurial thinking?</div>
+    <div class="answer">
+      <p>I think getting into business early is good. So what I mean by that is children actually doing something to make money at a very young age. When I think about a lot of the entrepreneurs I know, or people who have made a lot of money, they often start extremely young. So eight, nine or ten-years-old doing some sort of activity and over a period of months to earn money in some innovative way selling or making things, or raising pigs or calves or whatever it is.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>&copy; 2026 Clint Van Marrewijk</div>
+</footer>
+
+</body>
+</html>

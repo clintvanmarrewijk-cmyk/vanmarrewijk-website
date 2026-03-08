@@ -530,7 +530,7 @@
 
 <!-- HERO SLIDER -->
 <div class="hero">
-  <div class="slider-track" id="sliderTrack">
+  <div class="slider-track" id="sliderTrack" style="transform: translateX(-400%);">
     <div class="slide">
       <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
       <div class="slide-overlay"></div>
@@ -590,12 +590,12 @@
   </div>
   <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">‹</button>
   <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">›</button>
-  <div class="slider-dots" id="sliderDots"><button class="slider-dot active" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
-  <div class="slide-counter" id="slideCounter">1 / 7</div>
+  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot active" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
+  <div class="slide-counter" id="slideCounter">5 / 7</div>
 </div>
 
 <!-- INTRO -->
-<div class="intro reveal">
+<div class="intro reveal visible">
   <h1 class="sr-only">Clint Van Marrewijk - Personal Website</h1>
   <p class="intro-headline">Building the tools that<br>bring <span>lithium</span> to market</p>
   <p class="tagline">
@@ -627,7 +627,7 @@
 </div>
 
 <!-- COMPANIES -->
-<section id="companies" class="reveal">
+<section id="companies" class="reveal visible">
   <div class="section-label">Companies</div>
   <h2 class="section-title">What I'm building</h2>
   <div class="companies">
@@ -651,7 +651,7 @@
 </section>
 
 <!-- EXPERTISE -->
-<section id="expertise" class="reveal">
+<section id="expertise" class="reveal visible">
   <div class="section-label">Expertise</div>
   <h2 class="section-title">What I know about</h2>
   <div class="card-slider-wrapper">
@@ -715,13 +715,12 @@
 <!-- QUOTE -->
 <div class="quote-section">
   <blockquote>
-    "The lithium brine industry doesn't have a supply problem. It has a knowledge transfer problem."
-  </blockquote>
+    Yes this website was built with AI assistance</blockquote>
   <p class="attribution">— Clint Van Marrewijk</p>
 </div>
 
 <!-- WRITING -->
-<section id="writing" class="reveal">
+<section id="writing" class="reveal visible">
   <div class="section-label">Writing &amp; Media</div>
   <h2 class="section-title">Things I've said publicly</h2>
   <div class="card-slider-wrapper">
@@ -769,7 +768,7 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="reveal">
+<section id="contact" class="reveal visible">
   <div class="section-label">Get in touch</div>
   <h2 class="section-title">Let's talk</h2>
   <div class="contact-grid">

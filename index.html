@@ -53,11 +53,17 @@
   /* ─── NAV ─── */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(26,39,68,0.95);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
     padding: 0 40px;
     display: flex; align-items: center; justify-content: space-between;
     height: 64px;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(26,39,68,0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
   }
   nav .name {
     font-size: 16px; font-weight: 600; color: var(--white);
@@ -75,11 +81,11 @@
   /* ─── HERO WITH SLIDER ─── */
   .hero {
     position: relative;
-    height: 85vh;
-    min-height: 500px;
-    max-height: 750px;
+    height: 92vh;
+    min-height: 540px;
+    max-height: 820px;
     overflow: hidden;
-    margin-top: 64px;
+    margin-top: 0;
   }
   .slider-track {
     display: flex;
@@ -515,7 +521,7 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav class="">
   <div class="name">Clint Van Marrewijk</div>
   <button class="hamburger" onclick="document.querySelector('.links').classList.toggle('open')" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -530,7 +536,7 @@
 
 <!-- HERO SLIDER -->
 <div class="hero">
-  <div class="slider-track" id="sliderTrack" style="transform: translateX(-300%);">
+  <div class="slider-track" id="sliderTrack" style="transform: translateX(-500%);">
     <div class="slide">
       <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
       <div class="slide-overlay"></div>
@@ -590,8 +596,8 @@
   </div>
   <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">‹</button>
   <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">›</button>
-  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot active" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
-  <div class="slide-counter" id="slideCounter">4 / 7</div>
+  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot active" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
+  <div class="slide-counter" id="slideCounter" style="display:none">6 / 7</div>
 </div>
 
 <!-- INTRO -->
@@ -608,19 +614,19 @@
 <div class="stats">
   <div class="stats-inner">
     <div>
-      <div class="stat-num">58</div>
+      <div class="stat-num" data-target="58">0</div>
       <div class="stat-label">Brine assets worked ON</div>
     </div>
     <div>
-      <div class="stat-num">267</div>
+      <div class="stat-num" data-target="267">0</div>
       <div class="stat-label">Assets MAPPED</div>
     </div>
     <div>
-      <div class="stat-num">70%</div>
+      <div class="stat-num" data-target="70" data-suffix="%">0%</div>
       <div class="stat-label">MARKET PENETRATION</div>
     </div>
     <div>
-      <div class="stat-num">2018</div>
+      <div class="stat-num" data-target="2018">0</div>
       <div class="stat-label">Founded Zelandez</div>
     </div>
   </div>
@@ -706,8 +712,8 @@
         <p>BE (Hons) in Mechanical Engineering from the University of Canterbury. Specialised in fluid dynamics, thermodynamics, and energy engineering — the foundation that underpins my career.&nbsp;</p>
       </div>
     </div>
-    <button class="card-slider-arrow cs-prev" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
-    <button class="card-slider-arrow cs-next hidden" onclick="scrollCardSlider('expertiseSlider', 1)" aria-label="Next">›</button>
+    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('expertiseSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
 
@@ -901,6 +907,58 @@
     slider.addEventListener('scroll', () => updateCardArrows(slider), { passive: true });
     window.addEventListener('resize', () => updateCardArrows(slider));
   });
+
+  // ── NAV: transparent over hero, solid on scroll ──
+  const navEl = document.querySelector('nav');
+  const heroEl = document.querySelector('.hero');
+  function updateNav() {
+    if (!heroEl) return;
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    navEl.classList.toggle('scrolled', heroBottom <= 64);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ── ANIMATED STAT COUNTERS ──
+  function animateCounters() {
+    const counters = document.querySelectorAll('.stat-num[data-target]');
+    counters.forEach((el, index) => {
+      const target = parseInt(el.getAttribute('data-target'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1800; // ms
+      const stagger = index * 150; // stagger each counter
+      let startTime = null;
+
+      setTimeout(() => {
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          // Ease-out cubic for a satisfying deceleration
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(eased * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, stagger);
+    });
+  }
+
+  // Trigger counters when stats section enters viewport
+  let statsAnimated = false;
+  const statsSection = document.querySelector('.stats');
+  if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          animateCounters();
+          statsObserver.unobserve(statsSection);
+        }
+      });
+    }, { threshold: 0.3 });
+    statsObserver.observe(statsSection);
+  }
 </script>
 
 

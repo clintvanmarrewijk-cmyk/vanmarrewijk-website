@@ -521,7 +521,7 @@
 <body>
 
 <!-- NAV -->
-<nav class="">
+<nav class="scrolled">
   <div class="name">Clint Van Marrewijk</div>
   <button class="hamburger" onclick="document.querySelector('.links').classList.toggle('open')" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -536,7 +536,7 @@
 
 <!-- HERO SLIDER -->
 <div class="hero">
-  <div class="slider-track" id="sliderTrack" style="transform: translateX(-500%);">
+  <div class="slider-track" id="sliderTrack" style="transform: translateX(-600%);">
     <div class="slide">
       <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
       <div class="slide-overlay"></div>
@@ -596,8 +596,8 @@
   </div>
   <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">‹</button>
   <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">›</button>
-  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot active" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
-  <div class="slide-counter" id="slideCounter" style="display:none">6 / 7</div>
+  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot active" aria-label="Go to slide 7"></button><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
+  <div class="slide-counter" id="slideCounter" style="display:none">7 / 7</div>
 </div>
 
 <!-- INTRO -->
@@ -719,7 +719,7 @@
 
 <!-- QUOTE -->
 <div class="quote-section">
-  <blockquote><span style="font-style: normal;">AI was used to build this website.</span></blockquote>
+  <blockquote><span style="font-style: normal;">Lithium is not a rare mineral</span></blockquote>
   <p class="attribution">— Clint Van Marrewijk</p>
 </div>
 
@@ -766,8 +766,8 @@
         <div class="card-arrow"><span>Read post →</span></div>
       </a>
     </div>
-    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
-    <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('writingSlider', 1)" aria-label="Next">›</button>
+    <button class="card-slider-arrow cs-prev" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-next hidden" onclick="scrollCardSlider('writingSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
 

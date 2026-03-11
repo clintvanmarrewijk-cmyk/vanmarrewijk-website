@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Books Worth Giving — Clint Van Marrewijk</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --accent: #4ecdc4;
+    --accent-dim: rgba(78,205,196,0.15);
+    --text: #2c3e50;
+    --text-light: #6b7c93;
+    --white: #ffffff;
+    --bg: #fafbfc;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,39,68,0.95);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  nav .name {
+    font-size: 16px; font-weight: 600; color: var(--white);
+    letter-spacing: 0.5px; text-decoration: none;
+  }
+  nav .name:hover { color: var(--accent); }
+  nav .back-link {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 14px; transition: color 0.2s;
+  }
+  nav .back-link:hover { color: var(--accent); }
+
+  .page-hero {
+    margin-top: 64px;
+    background: var(--navy);
+    padding: 80px 40px 60px;
+  }
+  .page-hero-inner { max-width: 800px; margin: 0 auto; }
+  .page-hero .label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-size: 36px; font-weight: 700; color: var(--white);
+    line-height: 1.3; margin-bottom: 12px;
+  }
+  .page-hero .meta { font-size: 15px; color: rgba(255,255,255,0.6); }
+
+  .content {
+    max-width: 800px; margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+  .content p {
+    font-size: 17px; line-height: 1.8; color: var(--text-light);
+    margin-bottom: 24px;
+  }
+  .content h2 {
+    font-size: 22px; font-weight: 600; color: var(--navy);
+    margin-top: 40px; margin-bottom: 16px;
+  }
+  .content img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 32px 0;
+  }
+  .content .caption {
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 32px;
+  }
+  .content ol {
+    padding: 0 0 0 24px;
+    margin-bottom: 24px;
+    counter-reset: book-counter;
+    list-style: none;
+  }
+  .content ol li {
+    font-size: 16px; line-height: 1.9; color: var(--text-light);
+    padding-left: 8px;
+    position: relative;
+    margin-bottom: 4px;
+    counter-increment: book-counter;
+  }
+  .content ol li::before {
+    content: counter(book-counter) ".";
+    position: absolute;
+    left: -24px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+    width: 28px;
+    text-align: right;
+  }
+  .content ol li .author {
+    color: #9ba8b7;
+    font-style: italic;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 48px 0;
+    border-radius: 2px;
+  }
+
+  footer {
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 13px; color: var(--text-light);
+    border-top: 1px solid #e8ecf1;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .page-hero { padding: 60px 24px 40px; }
+    .page-hero h1 { font-size: 28px; }
+    .content { padding: 32px 24px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="name">&larr; Clint Van Marrewijk</a>
+  <a href="../index.html#writing" class="back-link">Back to Writing</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="label">Books</div>
+    <h1>100 Books Worth Giving</h1>
+    <div class="meta">2015 &mdash; A living list, updated over the years</div>
+  </div>
+</div>
+
+<div class="content">
+  <p>I&rsquo;ve been building a bookshelf of 100 books for the last 10 years &mdash; books that can be easily recommended &mdash; for the &ldquo;My daughter, when you&rsquo;ve read these you will be a woman&rdquo; type recommendation.</p>
+
+  <p>What&rsquo;s nice about this, is that when I read a book I think &ldquo;makes the cut&rdquo;, I then go back and read the book it&rsquo;s going to replace, again. To make a decision.</p>
+
+  <img src="images/snapshot-of-some-books.jpg" alt="A selection of books from the list on a wooden bookshelf">
+  <p class="caption">A snapshot of a few from the shelf</p>
+
+  <p>Here&rsquo;s the list at the moment, in no particular order:</p>
+
+  <ol>
+    <li>Charlie Mike, <span class="author">Leonard B Scott</span></li>
+    <li>A Short History of Progress, <span class="author">Ronald Wright</span></li>
+    <li>King Rat, <span class="author">James Clavell</span></li>
+    <li>The Black Swan, <span class="author">Nassim Nicolas Taleb</span></li>
+    <li>The Bronze Horseman, <span class="author">Paullina Simons</span></li>
+    <li>The First Tycoon: The Epic Life of Cornelius Vanderbilt, <span class="author">T.J. Stiles</span></li>
+    <li>Catch Me If You Can, <span class="author">Frank Abagnale Junior</span></li>
+    <li>Value Investing, <span class="author">Seth Klarman</span></li>
+    <li>A Random Walk Down Wall Street, <span class="author">Burton Malkiel</span></li>
+    <li>Reminiscences of a Stock Operator, <span class="author">Edwin Lef&egrave;vre</span></li>
+    <li>A Good Keen Man, <span class="author">Barry Crump</span></li>
+    <li>Fear and Loathing in Las Vegas, <span class="author">Hunter S. Thompson</span></li>
+    <li>Cod, <span class="author">Mark Kurlansky</span></li>
+    <li>Salt, <span class="author">Mark Kurlansky</span></li>
+    <li>The Rise and Fall of the Third Chimpanzee, <span class="author">Jared Diamond</span></li>
+    <li>A Short History of the Twentieth Century, <span class="author">Geoffrey Blainey</span></li>
+    <li>Against the Gods, <span class="author">Peter Bernstein</span></li>
+    <li>The Ascent of Money, <span class="author">Niall Ferguson</span></li>
+    <li>Sherlock Holmes, <span class="author">Arthur Conan Doyle</span></li>
+    <li>1984, <span class="author">George Orwell</span></li>
+    <li>The Time Traveler&rsquo;s Wife, <span class="author">Audrey Niffenegger</span></li>
+    <li>The Saga of Recluce, <span class="author">L. E. Modesitt Jr.</span></li>
+    <li>Catch 22, <span class="author">Joseph Heller</span></li>
+    <li>When the Lion Feeds, <span class="author">Wilbur Smith</span></li>
+    <li>The Power of One, <span class="author">Bryce Courtenay</span></li>
+    <li>Birds of Prey, <span class="author">Wilbur Smith</span></li>
+    <li>Zero to One, <span class="author">Peter Thiel</span></li>
+    <li>One Day in the Life of Ivan Denisovich, <span class="author">Aleksandr Solzhenitsyn</span></li>
+    <li>Titan: The Life of John D. Rockefeller, <span class="author">Ron Chernow</span></li>
+    <li>The Bourne Identity, <span class="author">Robert Ludlum</span></li>
+    <li>The Horse Whisperer, <span class="author">Nicholas Evans</span></li>
+    <li>The Hobbit, <span class="author">J.R.R. Tolkien</span></li>
+    <li>The Old Man and the Sea, <span class="author">Ernest Hemingway</span></li>
+    <li>Forrest Gump, <span class="author">Winston Groom</span></li>
+    <li>The Tipping Point, <span class="author">Malcolm Gladwell</span></li>
+    <li>Heroes: A History of Hero Worship, <span class="author">Lucy Hughes-Hallett</span></li>
+    <li>The Clan of the Cave Bear, <span class="author">Jean M. Auel</span></li>
+    <li>Engineers&rsquo; Dreams, <span class="author">Willy Ley</span></li>
+    <li>Republic, <span class="author">Plato</span></li>
+    <li>The Great Gatsby, <span class="author">F. Scott Fitzgerald</span></li>
+    <li>The Lord of the Rings, <span class="author">J.R.R. Tolkien</span></li>
+    <li>The Picture of Dorian Gray, <span class="author">Oscar Wilde</span></li>
+    <li>The Name of the Wind, <span class="author">Patrick Rothfuss</span></li>
+    <li>Status Anxiety, <span class="author">Alain de Botton</span></li>
+    <li>The Grapes of Wrath, <span class="author">John Steinbeck</span></li>
+    <li>The Art of War, <span class="author">Sun Tzu</span></li>
+    <li>Power of the Sword, <span class="author">Wilbur Smith</span></li>
+    <li>Open Society, <span class="author">George Soros</span></li>
+    <li>Made in America, <span class="author">Sam Walton</span></li>
+    <li>Killing Floor, <span class="author">Lee Child</span></li>
+    <li>The Consolations of Philosophy, <span class="author">Alain de Botton</span></li>
+    <li>A Brief History of Economic Genius, <span class="author">Paul Strathern</span></li>
+    <li>Outliers, <span class="author">Malcolm Gladwell</span></li>
+    <li>The Agony and the Ecstasy, <span class="author">Irving Stone</span></li>
+    <li>Shantaram, <span class="author">Gregory David Roberts</span></li>
+    <li>When Genius Failed, <span class="author">Roger Lowenstein</span></li>
+    <li>A Short History of Nearly Everything, <span class="author">Bill Bryson</span></li>
+    <li>The Catcher in the Rye, <span class="author">J.D. Salinger</span></li>
+    <li>Chickenhawk, <span class="author">Robert Mason</span></li>
+    <li>The Intelligent Investor, <span class="author">Benjamin Graham</span></li>
+    <li>Sushi for Beginners, <span class="author">Marian Keyes</span></li>
+    <li>The Pillars of the Earth, <span class="author">Ken Follett</span></li>
+    <li>Captain Corelli&rsquo;s Mandolin, <span class="author">Louis de Berni&egrave;res</span></li>
+    <li>The Burning Shore, <span class="author">Wilbur Smith</span></li>
+    <li>The Eagle and the Raven, <span class="author">James A. Michener</span></li>
+    <li>Sapiens: A Brief History of Humankind, <span class="author">Yuval Noah Harari</span></li>
+    <li>Cross Stitch, <span class="author">Diana Gabaldon</span></li>
+    <li>The Godfather, <span class="author">Mario Puzo</span></li>
+    <li>South, <span class="author">Ernest Shackleton</span></li>
+    <li>Sophie&rsquo;s World, <span class="author">Jostein Gaarder</span></li>
+    <li>Dracula, <span class="author">Bram Stoker</span></li>
+    <li>If This Is a Man, <span class="author">Primo Levi</span></li>
+    <li>The Sleepwalkers, <span class="author">Arthur Koestler</span></li>
+    <li>The Weather Makers, <span class="author">Tim Flannery</span></li>
+    <li>Bastards I Have Met, <span class="author">Barry Crump</span></li>
+    <li>The Alchemist, <span class="author">Paulo Coelho</span></li>
+    <li>For Us, the Living, <span class="author">Robert A. Heinlein</span></li>
+    <li>Fooled by Randomness, <span class="author">Nassim Nicolas Taleb</span></li>
+    <li>A Farewell to Arms, <span class="author">Ernest Hemingway</span></li>
+    <li>A History of the World in 6 Glasses, <span class="author">Tom Standage</span></li>
+    <li>The Andromeda Strain, <span class="author">Michael Crichton</span></li>
+    <li>Adventures of Huckleberry Finn, <span class="author">Mark Twain</span></li>
+    <li>Gone Girl, <span class="author">Gillian Flynn</span></li>
+    <li>The Count of Monte Cristo, <span class="author">Alexandre Dumas</span></li>
+    <li>2001: A Space Odyssey, <span class="author">Arthur C. Clarke</span></li>
+    <li>The Martian, <span class="author">Andy Weir</span></li>
+    <li>How Britain Made the Modern World, <span class="author">Niall Ferguson</span></li>
+    <li>The Covenant, <span class="author">James A. Michener</span></li>
+    <li>The Swiss Family Robinson, <span class="author">J.D. Wyss</span></li>
+    <li>Dune, <span class="author">Frank Herbert</span></li>
+    <li>On the Road, <span class="author">Jack Kerouac</span></li>
+    <li>Trainspotting, <span class="author">Irvine Welsh</span></li>
+    <li>The Fountainhead, <span class="author">Ayn Rand</span></li>
+    <li>The Inevitable, <span class="author">Kevin Kelly</span></li>
+    <li>A Painted House, <span class="author">John Grisham</span></li>
+    <li>The Blade Itself, <span class="author">Joe Abercrombie</span></li>
+    <li>Steve Jobs, <span class="author">Walter Isaacson</span></li>
+    <li>Ender&rsquo;s Game, <span class="author">Orson Scott Card</span></li>
+    <li>The First Fifteen Lives of Harry August, <span class="author">Claire North</span></li>
+    <li>Flash Boys, <span class="author">Michael Lewis</span></li>
+  </ol>
+
+  <div class="section-divider"></div>
+
+  <p>I&rsquo;ll keep reading and improving this list of 100 books, and will update it here from now on.</p>
+</div>
+
+<footer>
+  &copy; 2026 Clint Van Marrewijk
+</footer>
+</body>
+</html>

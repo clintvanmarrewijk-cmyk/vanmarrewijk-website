@@ -72,7 +72,7 @@
   nav .links { display: flex; gap: 32px; }
   nav .links a {
     color: rgba(255,255,255,0.7); text-decoration: none;
-    font-size: 14px; font-weight: 400; transition: color 0.2s;
+    font-size: 14px; font-weight: 600; transition: color 0.2s;
   }
   nav .links a:hover { color: var(--accent); }
   .hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -142,19 +142,19 @@
     z-index: 10;
   }
   .slider-dot {
-    width: 10px; height: 10px;
+    width: 8px; height: 8px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.35);
     border: none;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     padding: 0;
   }
   .slider-dot.active {
-    background: var(--accent);
-    transform: scale(1.2);
+    background: var(--white);
+    transform: scale(1.15);
   }
-  .slider-dot:hover { background: rgba(255,255,255,0.8); }
+  .slider-dot:hover { background: rgba(255,255,255,0.7); }
   .slider-arrow {
     position: absolute;
     top: 50%;
@@ -536,7 +536,7 @@
 
 <!-- HERO SLIDER -->
 <div class="hero">
-  <div class="slider-track" id="sliderTrack" style="transform: translateX(-200%);">
+  <div class="slider-track" id="sliderTrack" style="transform: translateX(-100%);">
     <div class="slide">
       <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
       <div class="slide-overlay"></div>
@@ -596,8 +596,8 @@
   </div>
   <button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="Previous slide">‹</button>
   <button class="slider-arrow next" onclick="moveSlide(1)" aria-label="Next slide">›</button>
-  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot" aria-label="Go to slide 2"></button><button class="slider-dot active" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
-  <div class="slide-counter" id="slideCounter" style="display:none">3 / 7</div>
+  <div class="slider-dots" id="sliderDots"><button class="slider-dot" aria-label="Go to slide 1"></button><button class="slider-dot active" aria-label="Go to slide 2"></button><button class="slider-dot" aria-label="Go to slide 3"></button><button class="slider-dot" aria-label="Go to slide 4"></button><button class="slider-dot" aria-label="Go to slide 5"></button><button class="slider-dot" aria-label="Go to slide 6"></button><button class="slider-dot" aria-label="Go to slide 7"></button></div>
+  <div class="slide-counter" id="slideCounter" style="display:none">2 / 7</div>
 </div>
 
 <!-- INTRO -->
@@ -764,6 +764,12 @@
         <h4>Meeting Usain Bolt</h4>
         <div class="card-meta">October 2016 · Herzogenaurach, Germany</div>
         <div class="card-arrow"><span>Read post →</span></div>
+      </a>
+      <a class="writing-card" href="writing/100-books-worth-giving.html">
+        <div class="card-type">Books</div>
+        <h4>100 Books Worth Giving</h4>
+        <div class="card-meta">2015 · A living list, updated over the years</div>
+        <div class="card-arrow"><span>View the list →</span></div>
       </a>
     </div>
     <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>

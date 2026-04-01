@@ -5,7 +5,7 @@
 <title>Clint Van Marrewijk — Lithium Brine Explorer &amp; Co-Founder of Zelandez</title>
 <meta name="description" content="Co-founder of Zelandez, the world's largest independent provider of specialist lithium brine services. Helping explorers avoid expensive mistakes and get projects to production across Argentina, Chile, Bolivia, and North America.">
 <meta name="author" content="Clint Van Marrewijk">
-<meta name="keywords" content="lithium brine, Zelandez, SalarIQ, lithium exploration, DLE, brinefield management, lithium consulting, resource estimation">
+<meta name="keywords" content="lithium brine, Zelandez, Puna, lithium exploration, DLE, brinefield management, lithium consulting, resource estimation">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Clint Van Marrewijk — Lithium Brine Explorer &amp; Co-Founder of Zelandez">
@@ -459,11 +459,75 @@
   .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.35s; }
+
+  /* ─── HOVER MICRO-INTERACTIONS ─── */
+  .company-card {
+    transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
+  }
+  .company-card:hover {
+    box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+  .expertise-slider-item {
+    transition: box-shadow 0.3s, transform 0.25s;
+  }
+  .expertise-slider-item:hover {
+    box-shadow: 0 10px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px) scale(1.01);
+  }
+  .writing-card {
+    transition: box-shadow 0.3s, transform 0.25s;
+  }
+  .writing-card:hover {
+    box-shadow: 0 10px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px) scale(1.01);
+  }
+  .contact-link {
+    transition: border-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .contact-link:hover .icon {
+    background: var(--accent);
+    color: var(--white);
+    transition: background 0.3s, color 0.3s;
+  }
+  nav .links a {
+    position: relative;
+  }
+  nav .links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  nav .links a:hover::after {
+    width: 100%;
+  }
+  .slider-arrow:hover {
+    background: rgba(26,39,68,0.8);
+    transform: translateY(-50%) scale(1.08);
+  }
+  .card-slider-arrow:hover {
+    background: var(--slate);
+    transform: translateY(-50%) scale(1.1);
   }
 
   
@@ -521,7 +585,7 @@
 <body>
 
 <!-- NAV -->
-<nav class="">
+<nav class="scrolled">
   <div class="name">Clint Van Marrewijk</div>
   <button class="hamburger" onclick="document.querySelector('.links').classList.toggle('open')" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -609,7 +673,7 @@
 </div>
 
 <!-- INTRO -->
-<div class="intro reveal visible">
+<div class="intro reveal">
   <h1 class="sr-only">Clint Van Marrewijk - Personal Website</h1>
   <p class="intro-headline">Building the tools that<br>bring <span>lithium</span> to market</p>
   <p class="tagline">
@@ -641,7 +705,7 @@
 </div>
 
 <!-- COMPANIES -->
-<section id="companies" class="reveal visible">
+<section id="companies" class="reveal delay-1">
   <div class="section-label">Companies</div>
   <h2 class="section-title">What I've Founded</h2>
   <div class="companies">
@@ -664,7 +728,7 @@
 </section>
 
 <!-- EXPERTISE -->
-<section id="expertise" class="reveal visible">
+<section id="expertise" class="reveal delay-2">
   <div class="section-label">Expertise</div>
   <h2 class="section-title">What I know about</h2>
   <div class="card-slider-wrapper">
@@ -720,7 +784,7 @@
         <p>BE (Hons) in Mechanical Engineering from the University of Canterbury. Specialised in fluid dynamics, thermodynamics, and energy engineering — the foundation that underpins my career.&nbsp;</p>
       </div>
     </div>
-    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-prev" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
     <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('expertiseSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
@@ -732,7 +796,7 @@
 </div>
 
 <!-- WRITING -->
-<section id="writing" class="reveal visible">
+<section id="writing" class="reveal delay-1">
   <div class="section-label">Writing &amp; Media</div>
   <h2 class="section-title">Things I've said publicly</h2>
   <div class="card-slider-wrapper">
@@ -780,19 +844,19 @@
         <div class="card-arrow"><span>View the list →</span></div>
       </a>
     </div>
-    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-prev" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
     <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('writingSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="reveal visible">
+<section id="contact" class="reveal delay-2">
   <div class="section-label">Get in touch</div>
   <h2 class="section-title">Let's talk</h2>
   <div class="contact-grid">
     <div class="contact-info">
       <p>
-        I like talking with interesting people — whether you're a lithium explorer looking for technical guidance, an investor evaluating brine assets, or a DLE vendor wanting an honest conversation about where the industry is heading... get in touch.&nbsp;</p>
+        Whether you're a lithium explorer looking for technical guidance, an investor evaluating brine assets, or a DLE vendor wanting an honest conversation about where the industry is heading... get in touch.&nbsp;</p>
     </div>
     <div class="contact-links">
       <a class="contact-link" href="https://www.linkedin.com/in/clint-van-marrewijk-37584032/" target="_blank">

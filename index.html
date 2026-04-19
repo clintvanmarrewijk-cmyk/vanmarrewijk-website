@@ -455,6 +455,50 @@
     letter-spacing: 1px;
   }
 
+  /* ─── PAGE ENTRANCE ANIMATION ─── */
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: scale(1.03); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes navSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideTextUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes introFadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero .slide img {
+    animation: heroFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  nav .name {
+    animation: navSlideDown 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+  }
+  nav .links a {
+    animation: navSlideDown 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+  nav .links a:nth-child(1) { animation-delay: 0.25s; }
+  nav .links a:nth-child(2) { animation-delay: 0.35s; }
+  nav .links a:nth-child(3) { animation-delay: 0.45s; }
+  nav .links a:nth-child(4) { animation-delay: 0.55s; }
+  .hero .slide-text {
+    animation: slideTextUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+  }
+  .hero .slider-dots {
+    animation: slideTextUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
+  }
+  .hero .slider-arrow {
+    animation: slideTextUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+  }
+  .intro {
+    animation: introFadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+  }
+
   /* ─── SCROLL REVEAL ─── */
   .reveal {
     opacity: 0;
@@ -602,7 +646,7 @@
 <div class="hero">
   <div class="slider-track" id="sliderTrack" style="transform: translateX(-100%);">
     <div class="slide">
-      <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
+      <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>The Zelandez team at our conference booth</h2>
@@ -610,7 +654,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-03-hitech-awards.jpg" alt="NZ Hi-Tech Awards 2024" loading="lazy">
+      <img src="site_images/slide-03-hitech-awards.jpg" alt="NZ Hi-Tech Awards 2024" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>2024 NZ Hi-Tech Awards</h2>
@@ -618,7 +662,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-05-sumo-japan.jpg" alt="Sumo wrestling in Tokyo" loading="lazy">
+      <img src="site_images/slide-05-sumo-japan.jpg" alt="Sumo wrestling in Tokyo" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Sumo in Tokyo with the team</h2>
@@ -626,7 +670,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-06-golf-texas.jpg" alt="Golf in Austin, Texas" loading="lazy">
+      <img src="site_images/slide-06-golf-texas.jpg" alt="Golf in Austin, Texas" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Home turf in Austin, Texas</h2>
@@ -634,7 +678,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-07-nz-home.jpg" alt="New Zealand countryside" loading="lazy">
+      <img src="site_images/slide-07-nz-home.jpg" alt="New Zealand countryside" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Back home in New Zealand</h2>
@@ -642,7 +686,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-09-presenting-tokyo.jpg" alt="Presenting Zelandez at Battery Gigafactories in Tokyo" loading="lazy">
+      <img src="site_images/slide-09-presenting-tokyo.jpg" alt="Presenting Zelandez at Battery Gigafactories in Tokyo" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Presenting in Tokyo</h2>
@@ -650,7 +694,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-10-christmas-camping.jpg" alt="Christmas camping trip on the beach in New Zealand" loading="lazy">
+      <img src="site_images/slide-10-christmas-camping.jpg" alt="Christmas camping trip on the beach in New Zealand" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Winding down after a day hiking</h2>
@@ -658,7 +702,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-11-saferme.jpg" alt="Clint holding a SaferMe sign" loading="lazy">
+      <img src="site_images/slide-11-saferme.jpg" alt="Clint holding a SaferMe sign" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>SaferMe site entry - Have you scanned in?</h2>
@@ -784,7 +828,7 @@
         <p>BE (Hons) in Mechanical Engineering from the University of Canterbury. Specialised in fluid dynamics, thermodynamics, and energy engineering — the foundation that underpins my career.&nbsp;</p>
       </div>
     </div>
-    <button class="card-slider-arrow cs-prev" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('expertiseSlider', -1)" aria-label="Previous">‹</button>
     <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('expertiseSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
@@ -844,7 +888,7 @@
         <div class="card-arrow"><span>View the list →</span></div>
       </a>
     </div>
-    <button class="card-slider-arrow cs-prev" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
+    <button class="card-slider-arrow cs-prev hidden" onclick="scrollCardSlider('writingSlider', -1)" aria-label="Previous">‹</button>
     <button class="card-slider-arrow cs-next" onclick="scrollCardSlider('writingSlider', 1)" aria-label="Next">›</button>
   </div>
 </section>
@@ -985,6 +1029,35 @@
     slider.addEventListener('scroll', () => updateCardArrows(slider), { passive: true });
     window.addEventListener('resize', () => updateCardArrows(slider));
   });
+
+  // ── HERO PARALLAX (desktop only) ──
+  const isMobile = window.matchMedia('(max-width: 768px)').matches
+                || ('ontouchstart' in window);
+  if (!isMobile) {
+    const parallaxImages = document.querySelectorAll('.slide img');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.pageYOffset;
+          const heroH = document.querySelector('.hero').offsetHeight;
+          if (scrollY <= heroH) {
+            const offset = scrollY * 0.4;
+            parallaxImages.forEach(img => {
+              img.style.transform = 'translateY(' + offset + 'px) scale(1.05)';
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+    // Set initial scale for parallax images
+    document.querySelectorAll('.slide img').forEach(img => {
+      img.style.willChange = 'transform';
+      img.style.transform = 'scale(1.05)';
+    });
+  }
 
   // ── NAV: transparent over hero, solid on scroll ──
   const navEl = document.querySelector('nav');

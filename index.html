@@ -373,8 +373,22 @@
     transform: translateY(-2px);
   }
   .expertise-slider-item .exp-icon {
-    font-size: 24px;
-    margin-bottom: 12px;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 14px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .expertise-slider-item .exp-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .expertise-slider-item:hover .exp-icon {
+    transform: translateY(-2px) scale(1.08);
   }
   .expertise-slider-item h4 {
     font-size: 16px; font-weight: 600; color: var(--navy);
@@ -513,6 +527,27 @@
   .reveal.delay-2 { transition-delay: 0.2s; }
   .reveal.delay-3 { transition-delay: 0.35s; }
 
+  /* ─── KEN BURNS (slow zoom + drift on the active hero slide) ─── */
+  /* slide-img wrapper is created at runtime so parallax (translateY)
+     and Ken Burns (scale/translate) can compose cleanly. */
+  .slide-img {
+    width: 100%; height: 100%;
+    will-change: transform;
+  }
+  .slide img {
+    transform: scale(1.05);
+    transition: transform 0.6s ease;
+  }
+  @keyframes kenBurns {
+    0%   { transform: scale(1.05) translate(0, 0); }
+    100% { transform: scale(1.12) translate(-1.5%, -1.5%); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .slide.active img {
+      animation: kenBurns 7s ease-out both;
+    }
+  }
+
   /* ─── HOVER MICRO-INTERACTIONS ─── */
   .company-card {
     transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
@@ -563,6 +598,13 @@
     transition: width 0.3s ease;
   }
   nav .links a:hover::after {
+    width: 100%;
+  }
+  /* Scrollspy: persistent indicator for the section currently in view */
+  nav .links a.nav-active {
+    color: var(--accent);
+  }
+  nav .links a.nav-active::after {
     width: 100%;
   }
   .slider-arrow:hover {
@@ -629,7 +671,7 @@
 <body>
 
 <!-- NAV -->
-<nav class="scrolled">
+<nav class="">
   <div class="name">Clint Van Marrewijk</div>
   <button class="hamburger" onclick="document.querySelector('.links').classList.toggle('open')" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -646,15 +688,15 @@
 <div class="hero">
   <div class="slider-track" id="sliderTrack" style="transform: translateX(-100%);">
     <div class="slide">
-      <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-01-team-conference.jpg" alt="Zelandez team at conference booth" loading="eager">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>The Zelandez team at our conference booth</h2>
         <p>Lithium Brine Technology Services — accelerating lithium supply worldwide.</p>
       </div>
     </div>
-    <div class="slide">
-      <img src="site_images/slide-03-hitech-awards.jpg" alt="NZ Hi-Tech Awards 2024" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+    <div class="slide active">
+      <img src="site_images/slide-03-hitech-awards.jpg" alt="NZ Hi-Tech Awards 2024" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>2024 NZ Hi-Tech Awards</h2>
@@ -662,7 +704,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-05-sumo-japan.jpg" alt="Sumo wrestling in Tokyo" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-05-sumo-japan.jpg" alt="Sumo wrestling in Tokyo" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Sumo in Tokyo with the team</h2>
@@ -670,7 +712,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-06-golf-texas.jpg" alt="Golf in Austin, Texas" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-06-golf-texas.jpg" alt="Golf in Austin, Texas" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Home turf in Austin, Texas</h2>
@@ -678,7 +720,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-07-nz-home.jpg" alt="New Zealand countryside" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-07-nz-home.jpg" alt="New Zealand countryside" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Back home in New Zealand</h2>
@@ -686,7 +728,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-09-presenting-tokyo.jpg" alt="Presenting Zelandez at Battery Gigafactories in Tokyo" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-09-presenting-tokyo.jpg" alt="Presenting Zelandez at Battery Gigafactories in Tokyo" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Presenting in Tokyo</h2>
@@ -694,7 +736,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-10-christmas-camping.jpg" alt="Christmas camping trip on the beach in New Zealand" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-10-christmas-camping.jpg" alt="Christmas camping trip on the beach in New Zealand" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>Winding down after a day hiking</h2>
@@ -702,7 +744,7 @@
       </div>
     </div>
     <div class="slide">
-      <img src="site_images/slide-11-saferme.jpg" alt="Clint holding a SaferMe sign" loading="lazy" style="will-change: transform; transform: translateY(264.4px) scale(1.05);">
+      <img src="site_images/slide-11-saferme.jpg" alt="Clint holding a SaferMe sign" loading="lazy">
       <div class="slide-overlay"></div>
       <div class="slide-text">
         <h2>SaferMe site entry - Have you scanned in?</h2>
@@ -778,52 +820,52 @@
   <div class="card-slider-wrapper">
     <div class="card-slider" id="expertiseSlider">
       <div class="expertise-slider-item">
-        <div class="exp-icon">⚖</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 21 10 4h4l4 17"></path><path d="M10 4l4 13M14 4l-4 13"></path><path d="M12 17v4"></path></svg></div>
         <h4>Brinefield Management</h4>
         <p>Full operational management for explorers — from drilling supervision, logging, pilot plant engineering, flowsheet selection and resource estimation. We do the work that makes the announcement timetable real.&nbsp;</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">⚙</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"></path><path d="M10 3v7L5.5 19a1.5 1.5 0 0 0 1.4 2.1h10.2a1.5 1.5 0 0 0 1.4-2.1L14 10V3"></path><path d="M7.5 16h9"></path></svg></div>
         <h4>DLE Advisory</h4>
         <p>Independent guidance on Direct Lithium Extraction technology selection. The hard parts isn't just the DLE. It's defining the right pretreatment, reinjection, and full flowsheet that also matters.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">☍</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7c3-1.5 6-1.5 9 0s6 1.5 9 0"></path><path d="M3 12c3-1.5 6-1.5 9 0s6 1.5 9 0"></path><path d="M3 17c3-1.5 6-1.5 9 0s6 1.5 9 0"></path></svg></div>
         <h4>Resource Estimation</h4>
         <p>NI 43-101 and JORC-compliant resource estimates built on proper subsurface characterization. We use the latest tools and technology specifically built for lithium brine.&nbsp;&nbsp;</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">🔍</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m21 21-5.85-5.85"></path><path d="M7.5 10.5l2 2 4-4"></path></svg></div>
         <h4>Technical Due Diligence</h4>
         <p>Independent technical reviews for M&amp;A, financing, and investment decisions. We assess project maturity relative to the project stage — working backwards from the FID to what the data room needs.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">🌐</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a13.5 13.5 0 0 1 0 18"></path><path d="M12 3a13.5 13.5 0 0 0 0 18"></path><path d="M5 18 19 6" stroke-dasharray="2 2"></path></svg></div>
         <h4>Cross-Boundary Dynamics</h4>
         <p>Brine doesn't respect property boundaries. Pumping from one well changes reservoir pressure for miles. The lithium industry hasn't adopted unitization frameworks yet, but it will have to.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">♼</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 13.5-5.8"></path><path d="M17.5 3v3.5h-3.5"></path><path d="M20 12a8 8 0 0 1-13.5 5.8"></path><path d="M6.5 21v-3.5H10"></path></svg></div>
         <h4>Reinjection</h4>
         <p>Mandatory in many jurisdictions, often 10% - 20% of total project economics, and frequently underestimated. We model reinjection requirements before they become surprises.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">📈</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M3 17l5-5 4 4 8-8"></path><path d="M15 8h5v5"></path></svg></div>
         <h4>Capital Raising &amp; Company Building</h4>
         <p>Funded SaferMe from startup to operating in 15+ countries. Raised capital across multiple structures — SAFEs, equity rounds, and strategic partnerships. Built and led teams through product-market fit and international expansion.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">💰</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10"></path><path d="M14.5 9.5c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5S10.6 12 12 12s2.5 1.1 2.5 2.5S13.4 17 12 17s-2.5-1.1-2.5-2.5"></path></svg></div>
         <h4>Investment Strategy</h4>
         <p>Six years at GMI covering product strategy, portfolio administration, and quantitative security analysis. Built financial models, helped launch a KiwiSaver scheme, and delivered GIPS-compliant performance reporting.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">💻</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m8 5-5 7 5 7"></path><path d="m16 5 5 7-5 7"></path><path d="m14 4-4 16"></path></svg></div>
         <h4>Software &amp; SaaS Products</h4>
         <p>Co-founded SaferMe — a SaaS safety and hazard reporting platform. End-to-end product leadership from concept through to enterprise sales across government, utilities, and infrastructure sectors.</p>
       </div>
       <div class="expertise-slider-item">
-        <div class="exp-icon">🛠</div>
+        <div class="exp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
         <h4>Mechanical Engineering</h4>
         <p>BE (Hons) in Mechanical Engineering from the University of Canterbury. Specialised in fluid dynamics, thermodynamics, and energy engineering — the foundation that underpins my career.&nbsp;</p>
       </div>
@@ -959,8 +1001,12 @@
     document.querySelectorAll('.slider-dot').forEach((d, i) => {
       d.classList.toggle('active', i === current);
     });
+    // Mark the active slide so Ken Burns runs only on it
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
     counter.textContent = (current + 1) + ' / ' + total;
   }
+  // Initial active slide (Ken Burns starts on first paint)
+  slides.forEach((s, i) => s.classList.toggle('active', i === current));
 
   function moveSlide(dir) {
     let next = current + dir;
@@ -1030,11 +1076,27 @@
     window.addEventListener('resize', () => updateCardArrows(slider));
   });
 
-  // ── HERO PARALLAX (desktop only) ──
+  // ── HERO PARALLAX + KEN BURNS WRAPPER (desktop only) ──
+  // Wrap each <img> in a .slide-img div so parallax (translateY on wrapper)
+  // and Ken Burns (animation on img) can run on different elements without
+  // stomping each other's transform.
+  document.querySelectorAll('.slide').forEach(slide => {
+    const img = slide.querySelector('img');
+    if (img && !img.parentElement.classList.contains('slide-img')) {
+      const wrap = document.createElement('div');
+      wrap.className = 'slide-img';
+      slide.insertBefore(wrap, img);
+      wrap.appendChild(img);
+      // Strip any lingering inline transform from the old parallax targeting img
+      img.style.transform = '';
+      img.style.willChange = '';
+    }
+  });
+
   const isMobile = window.matchMedia('(max-width: 768px)').matches
                 || ('ontouchstart' in window);
   if (!isMobile) {
-    const parallaxImages = document.querySelectorAll('.slide img');
+    const parallaxWrappers = document.querySelectorAll('.slide-img');
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
@@ -1043,8 +1105,8 @@
           const heroH = document.querySelector('.hero').offsetHeight;
           if (scrollY <= heroH) {
             const offset = scrollY * 0.4;
-            parallaxImages.forEach(img => {
-              img.style.transform = 'translateY(' + offset + 'px) scale(1.05)';
+            parallaxWrappers.forEach(w => {
+              w.style.transform = 'translateY(' + offset + 'px)';
             });
           }
           ticking = false;
@@ -1052,11 +1114,42 @@
         ticking = true;
       }
     }, { passive: true });
-    // Set initial scale for parallax images
-    document.querySelectorAll('.slide img').forEach(img => {
-      img.style.willChange = 'transform';
-      img.style.transform = 'scale(1.05)';
+  }
+
+  // ── SCROLLSPY: highlight the nav link for the section in view ──
+  const navLinks = document.querySelectorAll('nav .links a[href^="#"]');
+  const sectionMap = new Map();
+  navLinks.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const sec = document.getElementById(id);
+    if (sec) sectionMap.set(sec, a);
+  });
+  if (sectionMap.size) {
+    const setActive = (link) => {
+      navLinks.forEach(a => a.classList.toggle('nav-active', a === link));
+    };
+    const spyObserver = new IntersectionObserver((entries) => {
+      // Pick the entry closest to the top of the viewport that is intersecting
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (visible.length) {
+        const link = sectionMap.get(visible[0].target);
+        if (link) setActive(link);
+      }
+    }, {
+      // Trigger when the section's top is roughly under the nav and most of it is visible
+      rootMargin: '-72px 0px -55% 0px',
+      threshold: [0, 0.1, 0.5]
     });
+    sectionMap.forEach((_link, sec) => spyObserver.observe(sec));
+    // Clear active state when scrolled back above the first tracked section
+    window.addEventListener('scroll', () => {
+      const firstSec = sectionMap.keys().next().value;
+      if (firstSec && firstSec.getBoundingClientRect().top > 200) {
+        navLinks.forEach(a => a.classList.remove('nav-active'));
+      }
+    }, { passive: true });
   }
 
   // ── NAV: transparent over hero, solid on scroll ──
